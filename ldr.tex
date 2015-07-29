@@ -62,35 +62,40 @@ Each property is instantiated by a value (or mutiple values in case of an aggrea
 The values of properties are controled by the \emph{Object} component which invokes different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 
-In addition to the fine-grained component architecture, LD-R Web applications provide a fine-grained access control over the data provided by the components.
-RDF-based access control in LD-R applications operates at four different granularities provided by Dataset, Resource, Property and Object component levels.
-For example, we can restrict access to a specific property of a specific resource in a certain dataset.
-
-\end{itemize}
-
-
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/architecture.jpg}
   \caption{Architecture of LD-R Applications.}
   \label{fig:architecture}
 \end{figure}
 
-
-
-Customization and Personalization
-
-- scopes
+In addition to the fine-grained component architecture, LD-R Web applications provide a fine-grained access control over the data provided by the components.
+RDF-based access control in LD-R applications operates at four different granularities provided by Dataset, Resource, Property and Object component levels.
+For example, we can restrict access to a specific property of a specific resource in a certain dataset.
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/scopes.jpg}
   \caption{Scopes}
+  \label{fig:scopes}
 \end{figure}
 
-Better content visibility reusability
+\item \emph{Customization and Personalization}.
+LD-R provide a versatile approach for context adaptation.
+A context can be a specific domain of interest, a specific user requirments or both.
+In order to enable customization and personalization, LD-R exploits the concept of \emph{Scope}.
+A scope is defiened as a directed combination of Dataset, Resource, Property and Object components (cf. \autoref{fig:scopes}).
+Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
+
+
+- scopes and user-scopes
+
+\item \emph{Component/Content Visibility and Reusability}.
 
 - RDFa, Microdata
 
-Better component visibility, reusability and assembly
+
+
+\end{itemize}
+
 
 
 \subsection{Life Cycle}
