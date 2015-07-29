@@ -54,9 +54,13 @@ Linked Data-driven Web components provide the following features:
 \begin{itemize}
 
 \item \emph{Fine-grained Web applications}.
-RDF provides a common data model that allows data-driven components to be shared and integrated in a structured way across different applications.
-
-\autoref{fig:architecture} depicts different component levels when developing Linked Data-driven Web applications.
+Resource Description Framework (RDF) provides a common data model that allows data-driven components to be shared and integrated in a structured way across different applications. \autoref{fig:architecture} depicts different component levels in a Linked Data-driven Web application.
+The dataflow in the application starts from the \emph{Dataset} component which handles all the events related to a set of resources embedded in a named graph.
+The next level is the \emph{Resource} component which is identified by a URI and indicates what we are describing in the application.
+A resource is specified by a set of properties which are handled by the \emph{Property} component. Properties can be either individual or aggregate when combining multiple features of a resource.
+Each property is instantiated by a value (or mutiple values in case of an aggreagte object). 
+The values of properties are controled by the \emph{Object} component which invokes different components to view, edit and browse the property values.
+\emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 
 - component architecture
 
