@@ -62,9 +62,9 @@ Each property is instantiated by a value (or mutiple values in case of an aggrea
 The values of properties are controled by the \emph{Object} component which invokes different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 
-- component architecture
-
-- access control
+In addition to the fine-grained component architecture, LD-R Web applications provide a fine-grained access control over the data provided by the components.
+RDF-based access control in LD-R applications operates at four different granularities provided by Dataset, Resource, Property and Object component levels.
+For example, we can restrict access to a specific property of a specific resource in a certain dataset.
 
 \end{itemize}
 
@@ -75,12 +75,6 @@ The values of properties are controled by the \emph{Object} component which invo
   \label{fig:architecture}
 \end{figure}
 
-
-
-\begin{figure}[tb]
-  \includegraphics[width=.9\linewidth]{images/userAccessLevels.jpg}
-  \caption{User Access Levels}
-\end{figure}
 
 
 Customization and Personalization
