@@ -1,6 +1,6 @@
 
 \documentclass{acm_proc_article-sp}
-
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -45,22 +45,33 @@ Some advantages of CBSD approach are reusibility, replacability, extensibility, 
 
 Definition
 
-We define a \emph{Linked Data-driven Web Component} as a Web component which employs RDF data model for representing its content and specification (i.e. metadata about the component).
+We define a \emph{Linked Data-driven} (LD-R) Web Component as a Web component which employs RDF data model for representing its content and specification (i.e. metadata about the component).
 
 \subsection{Features}
 
 Linked Data-driven Web components provide the following features:
 
-Fine-grained Web applications
+\begin{itemize}
 
-\begin{figure}[tb]
-  \includegraphics[width=.9\linewidth]{images/architecture.jpg}
-  \caption{Architecture}
-\end{figure}
+\item \emph{Fine-grained Web applications}.
+RDF provides a common data model that allows data-driven components to be shared and integrated in a structured way across different applications.
+
+\autoref{fig:architecture} depicts different component levels when developing Linked Data-driven Web applications.
 
 - component architecture
 
 - access control
+
+\end{itemize}
+
+
+\begin{figure}[tb]
+  \includegraphics[width=.9\linewidth]{images/architecture.jpg}
+  \caption{Architecture of LD-R Applications.}
+  \label{fig:architecture}
+\end{figure}
+
+
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/userAccessLevels.jpg}
