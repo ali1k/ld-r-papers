@@ -43,9 +43,7 @@ Some advantages of CBSD approach are reusibility, replacability, extensibility, 
 
 \section{Linked Data-driven Web Components}
 
-Definition
-
-We define a \emph{Linked Data-driven} (LD-R) Web Component as a Web component which employs RDF data model for representing its content and specification (i.e. metadata about the component).
+We define a \emph{Linked Data-driven} (LD-R) Web Component as a Web component that employs RDF data model for representing its content and specification (i.e. metadata about the component).
 
 \subsection{Features}
 
@@ -84,9 +82,12 @@ A context can be a specific domain of interest, a specific user requirments or b
 In order to enable customization and personalization, LD-R exploits the concept of \emph{Scope}.
 A scope is defiened as a directed combination of Dataset, Resource, Property and Object components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
+For example, on the property level, we can define a generic configuration for all properties and then for some specific properties within a specific resource, we can change or overwrite those configurations.
+
+Scopes can be defined under a specific user which facilitates versioning and reuse of user-specific configs.
+User-specifc scopes provide different views on components and thereby data, based on the different personas dealing with those components.
 
 
-- scopes and user-scopes
 
 \item \emph{Component/Content Visibility and Reusability}.
 
