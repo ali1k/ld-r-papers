@@ -7,7 +7,7 @@
 \title{Linked Data-driven Web Components}
 \subtitle{}
 
-\numberofauthors{1} %  in this sample file, there are a *total*
+\numberofauthors{2} %  in this sample file, there are a *total*
 \author{
 % 1st. author
 \alignauthor
@@ -16,6 +16,13 @@ Ali Khalili\\
        \affaddr{VU University Amsterdam}\\
        \affaddr{The Netherlands}\\
        \email{a.khalili@vu.nl}
+% 2nd. author
+\alignauthor
+Antonis Loizou\\
+       \affaddr{Dept. of Computer Science}\\
+       \affaddr{VU University Amsterdam}\\
+       \affaddr{The Netherlands}\\
+       \email{a.loizou@vu.nl}
 }
 
 
@@ -31,10 +38,6 @@ The
 
 
 The remainder of this article...
-
-\section{Related Work}
-
-Web Components and the Semantic Web~\cite{pahl2011}
 
 \section{Web Components}
 \emph{Web Components} are a set of W3C standards that enable the creation of reusable widgets or components in Web documents and Web applications.
@@ -55,10 +58,12 @@ Linked Data-driven Web components provide the following features:
 Resource Description Framework (RDF) provides a common data model that allows data-driven components to be created, shared and integrated in a structured way across different applications. \autoref{fig:architecture} depicts the 5 main component levels in a Linked Data-driven Web application.
 The dataflow in the application starts from the \emph{Dataset} component which handles all the events related to a set of resources embedded in a named graph.
 The next level is the \emph{Resource} component which is identified by a URI and indicates what is described in the application.
-A resource is specified by a set of properties which are handled by the \emph{Property} component. Properties can be either individual or aggregate when combining multiple features of a resource.
-Each property is instantiated by a value (or mutiple values in case of an aggreagte object). 
-The values of properties are controled by the \emph{Object} component which invokes different components to view, edit and browse the property values.
+A resource is specified by a set of properties which are handled by the \emph{Property} component. Properties can be either individual or aggregate when combining multiple features of a resource (e.g. a component that combines longitude and latitude properties; start datae and end date properties for a date range, etc.).
+Each property is instantiated by an individual value or mutiple values in case of an aggreagte object. 
+The value(s) of properties are controled by the \emph{Object} component.
+Object component invokes different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
+These components apply on individual and aggregate objects (e.g. to show multiple coordinates on a the map).
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/architecture.jpg}
@@ -82,10 +87,11 @@ A context can be a specific domain of interest, a specific user requirments or b
 In order to enable customization and personalization, LD-R exploits the concept of \emph{Scope}.
 A scope is defiened as a directed combination of Dataset, Resource, Property and Object components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
-For example, on the property level, we can define a generic configuration for all properties and then for some specific properties within a specific resource, we can change or overwrite those configurations.
+Scopes are defined by using the URIs for RDF resources and types.
+For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. dcterms:title, rdfs:label) within a specific resource (e.g. <http://ld-r.org>), we can change or overwrite those configurations.
 
-Scopes can be defined under a specific user which facilitates versioning and reuse of user-specific configs.
-User-specifc scopes provide different views on components and thereby data, based on the different personas dealing with those components.
+Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
+User-specifc configs provide different views on components and thereby data, based on the different personas dealing with those components and data.
 
 
 
@@ -103,8 +109,30 @@ User-specifc scopes provide different views on components and thereby data, base
 
 \begin{figure}[tb]
   \includegraphics[width=1\linewidth]{images/lifecycle.jpg}
-  \caption{Life-cycle}
+  \caption{LD-R Components Life Cycle.}
+  \label{fig:lifecycle}
 \end{figure}
+
+As shown in \autoref{fig:lifecycle}, the LD-R components lifecycle encompasses four primary types of stakeholders:
+
+\begin{itemize}
+
+\item \emph{Linked Data Provider}.
+Since the LD-R approach focuses mainly on Linked Data applications, provision of RDF-compliant data is an essential phase in developing the LD-R components.
+*Data Scientists and different steps in providing fata from LOD2 project
+
+\item \emph{Component Developer}. 
+It includes programmers who are involved in component fabrication.
+
+
+\item \emph{Application Assembler}.
+The main task of application assembler is to identify the right components and configurations for the application; and combine them in a way which fits the application requirement. 
+
+\item \emph{End User}. 
+It is the user who experiences working with components to pursue his goals on a certain application domain.
+The end user is the one who requests developing a component and the one who sends feedback on the existing components.
+
+\end{itemize}
 
 \section{Implementation}
 
@@ -126,6 +154,10 @@ http://ld-r.org
 RISIS
 
 OpenPhacts
+
+\section{Related Work}
+
+Web Components and the Semantic Web~\cite{pahl2011}
 
 \section{Conclusion and Future Work}
 
