@@ -201,7 +201,8 @@ The component interaction with SPARQL endpoints to retrieve and update Linked Da
 \end{figure}
 
 In contrast to the centalized monolithic architecture, LD-R components comply with \emph{Microservices Architecture}~\cite{microservices}.
-Microservices architecture puts the main functionalities of a component into separete services and scales by distributing these services across servers, replicating as needed.
+As shown in \autoref{fig:microservices}, microservices architecture puts the main functionalities of a component into separete services (instead of in-memory function calls) and scales by distributing these services across servers, replicating as needed.
+This architectural style also minimizes the redeploying of the entire application when changes in components occure.
 
 
 \begin{figure}[tb]
