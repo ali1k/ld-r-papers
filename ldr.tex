@@ -194,15 +194,16 @@ As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which esc
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
 The component interaction with SPARQL endpoints to retrieve and update Linked Datad occurs via invoking RESTful services in actions.
 
-
-A monolithic application puts all its functionality into a single process and scales by replicating the monolith on multiple servers.
-A microservices architecture puts each element of functionality into a separete service and scales by distributing these services across servers, replicating as needed~\cite{microservices}.
-
-
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/microservices.jpg}
   \caption{Monoliths vs. Microservices~\cite{microservices}}
+  \label{fig:microservices}
 \end{figure}
+
+In contrast to the centalized monolithic architecture, LD-R applications comply with \emph{Microservices Architecture}~\cite{microservices}.
+Microservices architecture puts each element of component functionality into a separete service and scales by distributing these services across servers, replicating as needed.
+Microservices bring serveral performace and scalability advantages over monolithic applications which put all their functionality into a single process and scale by replicating the monolith on multiple servers.
+
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/screenshot.jpg}
