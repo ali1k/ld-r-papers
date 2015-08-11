@@ -179,7 +179,7 @@ The end user is the one who requests developing a component and the one who send
 
 \section{Implementation}
 
-In order to realize the idea of Linked Data-driven Web components, we implemented a software framework called \emph{Linked Data Reactor (LD-R)} which is aviable online at \url{http://ld-r.org}.
+In order to realize the idea of Linked Data-driven Web components, we implemented a software framework called \emph{Linked Data Reactor (LD-R)} which is available online at \url{http://ld-r.org}.
 LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components and Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 
 
@@ -192,7 +192,7 @@ LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/
 The main reasons we chose \emph{React} components over other existing solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainablity, number of developer tools/components/applications, and efficiency\footnote{Elaborating on all these factors is beyond the scope of this paper.}.
 As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favor of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
-The component interaction with SPARQL endpoints to retrieve and update Linked Datad occurs via invoking RESTful services in actions.
+The component interaction with SPARQL endpoints to retrieve and update Linked Data occurs via invoking RESTful services in actions.
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/microservices.jpg}
@@ -202,7 +202,6 @@ The component interaction with SPARQL endpoints to retrieve and update Linked Da
 
 In contrast to the centalized monolithic architecture, LD-R applications comply with \emph{Microservices Architecture}~\cite{microservices}.
 Microservices architecture puts each element of component functionality into a separete service and scales by distributing these services across servers, replicating as needed.
-Microservices bring serveral performace and scalability advantages over monolithic applications which put all their functionality into a single process and scale by replicating the monolith on multiple servers.
 
 
 \begin{figure}[tb]
