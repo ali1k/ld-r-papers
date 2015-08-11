@@ -179,13 +179,19 @@ The end user is the one who requests developing a component and the one who send
 
 \section{Implementation}
 
-http://ld-r.org
+In order to realize the idea of Linked Data-driven Web components, we implemented a software framework called \emph{Linked Data Reactor (LD-R)} which is aviable online at \url{http://ld-r.org}.
+LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components and Flux\footnote{\url{https://facebook.github.io/flux}} architecture , Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/dataflow.jpg}
-  \caption{Data Flow}
+  \caption{Data Flow in LD-R framework.}
+  \label{fig:dataflow}
 \end{figure}
+
+The main reasons we chose React components over other existing solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of technology and the performance benefits.
+As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favor of a unidirectional data flow. 
+When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
 
 
 
