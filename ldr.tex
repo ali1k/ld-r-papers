@@ -76,9 +76,10 @@ In this situation, more time is spent in re-designing existing UIs rather than f
  
 This paper presents adaptive Linked Data-driven Web components as an approach to build flexible and reusable Semantic Web UIs.
 \emph{Web Components} are a set of W3C standards~\cite{webcomponentsW3C} that enable the creation of reusable widgets or components in Web documents and Web applications.
-Linked Data-driven (LD-R) Web components as defiend in this paper are a set of predefined Web components representing the RDF data model compartments on a Web UI.
+Linked Data-driven (LD-R) Web components as defiend in this paper are a species of Web components that employ RDF data model for representing their content and specification (i.e. metadata about the component).
+LD-R components are supported by a set of predefined core Web components each representing a compartment of the RDF data model on a Web UI.
 LD-R components enable encapsualtion of the Semantic Web nature of an LDA thereby allow UX designers and Web developers outside the Semantic Web community to contribute to LDAs.
-LD-R components also allow current Semantic Web developers to reuse existing Web components in their LDAs.
+They also allow current Semantic Web developers to reuse existing Web components in their LDAs.
 Furthermore, LD-R components exploit the power and flexibility of RDF data model in describing and sharing resources to provide a mechanism to adapt the Web interfaces based on the meaning of data and user-defined rules.
 
 %The RDF (Resource Description Framework) as the basic building block of the Semantic Web provides a general framework to describe resources on the Web.
@@ -106,7 +107,8 @@ Next, we demonstrate how adaptive LD-R Web components can address the current is
 Finally, we discuss the implementation of our idea and its usage in real-world scenarios.
 
 \section{The Current Status of Semantic Web User Interface Development}
-1addressing Semantic Web developers on Github. used embedded form, less questions to attract more people!
+addressing Semantic Web developers on Github. used embedded form, less questions to attract more people!
+
 7 questions to address the following topics:
 - developer experience and proffiency
 - need for a frameowrk to bootstrap building LDA interfaces
@@ -118,7 +120,11 @@ Finally, we discuss the implementation of our idea and its usage in real-world s
 
 \section{Linked Data-driven Web Components}
 
-\cite{Norman2013}
+affordance~\cite{Norman2013}
+
+Web Components
+
+%\cite{SmartComposition2015}
 
 We define a \emph{Linked Data-driven} (LD-R) Web Component as a Web component that employs RDF data model for representing its content and specification (i.e. metadata about the component).
 
@@ -140,7 +146,7 @@ Object component invokes different components to view, edit and browse the prope
 These components apply on individual and aggregate objects (e.g. to show multiple coordinates on a the map).
 
 \begin{figure}[tb]
-  \includegraphics[width=.9\linewidth]{images/architecture.jpg}
+  \includegraphics[width=1\linewidth]{images/architecture.jpg}
   \caption{Architecture of LD-R Applications.}
   \label{fig:architecture}
 \end{figure}
