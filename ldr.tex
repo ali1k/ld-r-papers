@@ -225,8 +225,12 @@ Once the data and schemata are provided to the LD-R system, the system can bring
 For example, in case of geo-coordinates, by looking at a map component, data provider can easily curate the outlier data (e.g. ambigious entities) within a certain geo boundary.
 
 \item \emph{Component Developer}. 
-It includes programmers who are involved in component fabrication.
-
+It includes UX designers and Web programmers who are involved in component fabrication.
+There are two types of Web components developed in this step:
+a) \emph{Core components} (cf. \autoref{fig:architecture}) which abstract the underlying RDF data model.
+These components are built-in to the system, however can still be overwritten by developers who have profficiency in Semantic Web and Linked Data.
+b) \emph{Community-driven components} which exploit the core components.
+These components are either created from the scratch or by remixing and repurposing existing Web components found on the Web.
 
 \item \emph{Application Assembler}.
 The main task of application assembler is to identify the right components and configurations for the application; and combine them in a way which fits the application requirement. 
