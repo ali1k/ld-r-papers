@@ -180,13 +180,13 @@ This architectural style minimizes the redeploying of the entire application whe
 \end{figure}
 
 LD-R provide a versatile approach for context adaptation.
-A context can be a specific domain of interest, a specific user requirments or both.
+A context can be a specific domain of interest, a specific user requirment or both.
 In order to enable customization and personalization, LD-R exploits the concept of \emph{Scope}.
 A scope is defiened as a directed combination of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
 Scopes are defined by using either the URIs of named graphs, resources and properties; or by identifying the resource types and data types.
 UI adaptation is handled by traversing the configs for scopes and overwriting the configs when a more specific scope is found.
-For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. dcterms:title, rdfs:label) within a specific resource (e.g. <http://ld-r.org>), we can change or overwrite those configurations using the RP scope.
+For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. dcterms:title, rdfs:label) within a specific resource (e.g. <http://ld-r.org>), we can change those configurations using the RP scope.
 Another example would be having a different rendering for all resources of a specific type (e.g. foaf:Person).
 
 Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
