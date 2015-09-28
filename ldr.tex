@@ -197,7 +197,7 @@ A scope is defiened as a directed combination of Dataset, Resource, Property and
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
 Scopes are defined by using either the URIs of named graphs, resources and properties; or by identifying the resource types and data types.
 UI adaptation is handled by traversing the configs for scopes and overwriting the configs when a more specific scope is found.
-For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. dcterms:title, rdfs:label) within a specific resource (e.g. <http://ld-r.org>), we can change those configurations using the RP scope.
+For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. dcterms:title, rdfs:label) within a specific resource (e.g. <http://ld-r.org>), we can change those configurations using the \texttt{RP} scope.
 Another example would be having a different rendering for all resources of a specific type (e.g. foaf:Person).
 
 Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
@@ -220,7 +220,9 @@ As shown in \autoref{fig:lifecycle}, the LD-R components lifecycle encompasses f
 
 \item \emph{Linked Data Provider}.
 Since the LD-R approach focuses mainly on Linked Data applications, provision of RDF-compliant data is an essential phase in developing the LD-R components.
-*Data Scientists and different steps in providing fata from LOD2 project
+There are different stages~\cite{AuerLOD2} in Linked Data provision such as data extraction, storage, interlinking, enrichment, quality analysis and repair which should be taken into account by data scientists and Linked Data experts.
+Once the data and schemata are provided to the LD-R system, the system can bring a reciprocal value to Linked Data providers to better understand and curate the data when needed.
+For example, in case of geo-coordinates, by looking at a map component, data provider can easily curate the outlier data (e.g. ambigious entities) within a certain geo boundary.
 
 \item \emph{Component Developer}. 
 It includes programmers who are involved in component fabrication.
