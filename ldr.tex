@@ -197,8 +197,8 @@ A scope is defiened as a directed combination of Dataset, Resource, Property and
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
 Scopes are defined by using either the URIs of named graphs, resources and properties; or by identifying the resource types and data types.
 UI adaptation is handled by traversing the configs for scopes and overwriting the configs when a more specific scope is found.
-For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. \textit{dcterms:title} or \textit{rdfs:label}) within a specific resource (e.g. \textit{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
-Another example would be having a different rendering for all resources of a specific type (e.g. \textit{foaf:Person}).
+For example, on the property level, we can define a generic configuration for all properties and then for some specific properties (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
+Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
 Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
 User-specifc configs provide different views on components and thereby data, based on the different personas dealing with those components and data.
@@ -236,7 +236,7 @@ These components are either created from the scratch or by remixing and repurpos
 The main task of application assembler is to identify the right components and configurations for the application; and to combine them in a way which fits the application requirement. 
 Within the LD-R component system, the metadata provided by each Web component faciliates the discovery of relavant components.
 Having shared vocabularies on Linked Open Data allows assemblers to not only reuse components but also reuse the existing configurations and scopes published on the Web.
-For example, if there is already a suitable configuration for \textit{RP} scope which uses \textit{foaf:Person} as resource type and \textit{dcterms:description} as property URI, the assembler can reuse that config within his application.
+For example, if there is already a suitable configuration for \texttt{RP} scope which uses \texttt{foaf:Person} as resource type and \texttt{dcterms:description} as property URI, the assembler can reuse that config within his application.
 
 \item \emph{End User}. 
 It is the user who experiences working with components to pursue his goals on a certain application domain.
