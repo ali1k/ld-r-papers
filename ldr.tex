@@ -144,12 +144,6 @@ less but there is a capacity here because they already reuse libraries
 \paragraph{Issues with non-Semantic Web developers to create LDA UIs}
 55\% had issues which shows the need to mediate
 
-\begin{figure}[tb]
-  \includegraphics[width=1\linewidth]{images/architecture.jpg}
-  \caption{LD-R components architecture.}
-  \label{fig:architecture}
-\end{figure}
-
 \section{Adaptive Linked Data-driven Web Components}
 In order to streamline the process of UI development in LDAs, we propose an architecture of adaptive LD-R components -- Web components enriched by the RDF data model.
 In the following sections, the main elements of the architecture are described:
@@ -158,6 +152,12 @@ In the following sections, the main elements of the architecture are described:
 As depicted in \autoref{fig:architecture}, there are 4 main component levels in an LD-R Web application.
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
 For example, a viewer in the level of Dataset component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of Resource component can only allow visualizing properties of a specific resource (or a specific type of resource).
+
+\begin{figure}[tb]
+  \includegraphics[width=1\linewidth]{images/architecture.jpg}
+  \caption{LD-R components architecture.}
+  \label{fig:architecture}
+\end{figure}
 
 The dataflow in the application starts from the \emph{Dataset} component which handles all the events related to a set of resources under a named graph identified using a URI.
 The next level is the \emph{Resource} component which is identified by a URI and indicates what is described in the application.
