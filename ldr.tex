@@ -1,6 +1,46 @@
 \documentclass{acm_proc_article-sp}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{bera}% optional: just to have a nice mono-spaced font
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{xcolor}
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=7pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\renewcommand{\lstlistingname}{Code}
+
 \begin{document}
 
 \title{Adaptive Linked Data-driven Web Components:\\ Building Flexible and Reusable Semantic Web Interfaces}
@@ -312,7 +352,7 @@ LD-R approach was utilized in RISIS to help non-Linked Data experts to provide R
 In order to expose a user-friendly interface to researchers, the following main configurations and components were required:
 
 \paragraph{Configurations}
-\begin{itemize}
+\begin{compactitem}
  \item The UI should be able to to render metadata properties in different categories.
  \item The labels for properties should be changeable in the UI esp. in case of technical properties (e.g. RDF dump) unknown to researchers.
  \item There should be a hint for properties to help metadata editors to understand the meaning of the property.
@@ -320,17 +360,66 @@ In order to expose a user-friendly interface to researchers, the following main 
  \item When a DBpedia URI is provided, use the Wikipedia URI of the resource in the UI.
  \item If a dropdown menu is provided, there should be the ability to accommoodate user-defined values which are not listed in the menu.
  
-\end{itemize}
+\end{compactitem}
 
 \paragraph{Components}
-\begin{itemize}
+\begin{compactitem}
  \item A component for \texttt{dcterms:spatial} values to allow searching and inserting resources from DBpedia based on the entity type (e.g. Place, Person, Organization, etc).
  \item A component for \texttt{dcterms:subject} values to allow inserting and viewing DBpedia URIs as subject.
  \item A component for \texttt{dcterms:language} values to allow inserting and viewing languages formatted in ISO 639-1 using standard URIs (e.g. \url{http://id.loc.gov/vocabulary/iso639-1/en}).
  \item A component for \texttt{dcat:byteSize} values to allow inserting and viewing file size specified by a unit.
   \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
-\end{itemize}
+\end{compactitem}
 
+\begin{lstlisting}[language=json,firstnumber=1, caption=An excerpt of LD-R config for RISIS]
+resource: {
+    'generic': {
+        usePropertyCategories: 1,
+        propertyCategories: ['overview', 'people', 'date', 'legalAspects', 'technicalAspects', 'structuralAspects'],
+        resourceReactor: ['Resource'],
+        shortenURI: 1
+    }
+},
+property: {
+    'generic': {
+        propertyReactor: ['IndividualProperty'],
+        objectReactor: ['IndividualObject'],
+        objectIViewer: ['BasicIndividualView'],
+        objectIEditor: ['BasicIndividualInput']
+    },
+    'http://purl.org/dc/terms/language': {
+        allowNewValue: 1,
+        label: ['Dataset Language'],
+        category: ['overview'],
+        hint: ['The language of the dataset. Resources defined by the Library of Congress (http://id.loc.gov/vocabulary/iso639-1.html, http://id.loc.gov/vocabulary/iso639-2.html) SHOULD be used.'],
+        objectIViewer: ['LanguageView'],
+        objectIEditor: ['LanguageInput'],
+        defaultValue: ['http://id.loc.gov/vocabulary/iso639-1/en']
+    },
+    'http://purl.org/dc/terms/spatial': {
+         label: ['Geographical coverage'],
+         category: ['overview'],
+         hint: ['The geographical area covered by the dataset.'],
+         allowNewValue: 1,
+         objectReactor: ['AggregateObject'],
+         objectAViewer: ['DBpediaGoogleMapView'],
+         objectIViewer: ['BasicDBpediaView'],
+         asWikipedia: 1,
+         objectAEditor: ['BasicAggregateInput'],
+         objectIEditor: ['DBpediaInput'],
+         lookupClass: ['Place']
+     },
+    'http://purl.org/dc/terms/subject': {
+        category: ['overview'],
+        label: ['Keywords'],
+        hint: ['Tags a dataset with a topic.'],
+        allowNewValue: 1,
+        objectIEditor: ['DBpediaInput'],
+        objectIViewer: ['BasicDBpediaView'],
+        asWikipedia: 1
+    }    
+}
+\end{lstlisting}
 
 \section{Discussion}
 
@@ -342,8 +431,10 @@ Semantic Web Services
 
 Existing tools to view/edit and browse LD e.g. OntoWiki, Saha
 
+
 \section{Conclusion}
 
+Future work: UI for generating configs
 
 \section{Aknowledgement}
 We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-R framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
