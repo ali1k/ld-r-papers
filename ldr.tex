@@ -11,7 +11,7 @@
 
 \lstdefinelanguage{json}{
     basicstyle=\scriptsize\ttfamily,
-    numbers=left,
+    numbers=right,
     numberstyle=\scriptsize,
     stepnumber=1,
     numbersep=7pt,
@@ -340,6 +340,7 @@ Additionally, in order to facilitate creation of components metadata, we develop
 \begin{figure*}[ht] 
   \includegraphics[width=1\linewidth]{images/screenshots.jpg}
   \caption{An screenshot of RISIS metadata editor and datasets portal powered by the LD-R framework.}
+  \label{fig:risisScreenshot}
 \end{figure*}
 
 \section{Use Cases}
@@ -348,16 +349,17 @@ LD-R framewok is already in use within the RISIS~\footnote{\url{http://risis.eu}
 
 RISIS project with the aim of providing an infrastructure for research and innovation, targets researchers from various science and technology domains.
 LD-R approach was utilized in RISIS to help non-Linked Data experts to provide RDF-based metadata about their datasets~\footnote{\url{http://sms.risis.eu}} and then allowing researchers to search and request data based on the generated metadata~\footnote{\url{http://datasets.risis.eu}}.
-In order to expose a user-friendly interface to researchers, the following main configurations and components were required:
+In order to expose a user-friendly interface to researchers, a set of configurations and components were devised. 
+In the following, we present the list of main main requirements together with their representation in the LD-R config file~\footnote{see the complete config file at \url{http://github.com/risis-eu/sms-platform}}:
 
 \paragraph{Configurations}
 \begin{compactitem}
- \item The UI should be able to to render metadata properties in different categories.
- \item The labels for properties should be changeable in the UI esp. in case of technical properties (e.g. RDF dump) unknown to researchers.
- \item There should be a hint for properties to help metadata editors to understand the meaning of the property.
- \item Instead of showing the full URIs, the UI should render either a shortened URI or a meaningful string linked to the original URI. 
- \item When a DBpedia URI is provided, use the Wikipedia URI of the resource in the UI.
- \item If a dropdown menu is provided, there should be the ability to accommoodate user-defined values which are not listed in the menu.
+ \item The UI should be able to to render metadata properties in different categories (\autoref{code:config} line 3,4).
+ \item The labels for properties should be changeable in the UI esp. in case of technical properties (e.g. RDF dump) unknown to researchers (\autoref{code:config} line 18,26,40).
+ \item There should be a hint for properties to help metadata editors to understand the meaning of the property (\autoref{code:config} line 20,28, 41).
+ \item Instead of showing the full URIs, the output UI should render either a shortened URI or a meaningful string linked to the original URI (\autoref{code:config} line 6). 
+ \item When a DBpedia URI is provided, use the Wikipedia URI of the resource in the UI (\autoref{code:config} line 33,45).
+ \item If a dropdown menu is provided, there should be the ability to accommoodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
  
 \end{compactitem}
 
@@ -370,7 +372,7 @@ In order to expose a user-friendly interface to researchers, the following main 
   \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
 \end{compactitem}
 
-\begin{lstlisting}[language=json,firstnumber=1, caption=An excerpt of LD-R config for RISIS]
+\begin{lstlisting}[language=json,firstnumber=1, label=code:config, caption=An excerpt of LD-R config for RISIS]
 resource: {
     'generic': {
         usePropertyCategories: 1,
@@ -416,9 +418,24 @@ property: {
         objectIEditor: ['DBpediaInput'],
         objectIViewer: ['BasicDBpediaView'],
         asWikipedia: 1
-    }    
+    },
+    'http://purl.org/dc/terms/license': {
+        category: ['legalAspects'],
+        label: ['License'],
+        allowNewValue: 1,
+        objectIViewer: ['BasicOptionView'],
+        objectIEditor: ['BasicOptionInput'],
+        options: [
+            {label: 'Open Data Commons Attribution License', value: 'http://www.opendatacommons.org/licenses/by/'},
+            {label: 'Creative Commons Attribution-ShareAlike', value: 'http://creativecommons.org/licenses/by-sa/3.0/'}
+        ],
+        allowUserDefinedValue: 1
+    }   
 }
+
 \end{lstlisting}
+
+\autoref{fig:risisScreenshot} shows an screenshot of the generated UIs for metadata and search.
 
 \section{Discussion}
 
