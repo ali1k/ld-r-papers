@@ -1,0 +1,59 @@
+resource: {
+    'generic': {
+        usePropertyCategories: 1,
+        propertyCategories: ['overview', 'people', 'date', 'legalAspects', 'technicalAspects', 'structuralAspects'],
+        resourceReactor: ['Resource'],
+        shortenURI: 1
+    }
+},
+property: {
+    'generic': {
+        propertyReactor: ['IndividualProperty'],
+        objectReactor: ['IndividualObject'],
+        objectIViewer: ['BasicIndividualView'],
+        objectIEditor: ['BasicIndividualInput']
+    },
+    'http://purl.org/dc/terms/language': {
+        allowNewValue: 1,
+        label: ['Dataset Language'],
+        category: ['overview'],
+        hint: ['The language of the dataset. Resources defined by the Library of Congress (http://id.loc.gov/vocabulary/iso639-1.html, http://id.loc.gov/vocabulary/iso639-2.html) SHOULD be used.'],
+        objectIViewer: ['LanguageView'],
+        objectIEditor: ['LanguageInput'],
+        defaultValue: ['http://id.loc.gov/vocabulary/iso639-1/en']
+    },
+    'http://purl.org/dc/terms/spatial': {
+         label: ['Geographical coverage'],
+         category: ['overview'],
+         hint: ['The geographical area covered by the dataset.'],
+         allowNewValue: 1,
+         objectReactor: ['AggregateObject'],
+         objectAViewer: ['DBpediaGoogleMapView'],
+         objectIViewer: ['BasicDBpediaView'],
+         asWikipedia: 1,
+         objectAEditor: ['BasicAggregateInput'],
+         objectIEditor: ['DBpediaInput'],
+         lookupClass: ['Place']
+     },
+    'http://purl.org/dc/terms/subject': {
+        category: ['overview'],
+        label: ['Keywords'],
+        hint: ['Tags a dataset with a topic.'],
+        allowNewValue: 1,
+        objectIEditor: ['DBpediaInput'],
+        objectIViewer: ['BasicDBpediaView'],
+        asWikipedia: 1
+    },
+    'http://purl.org/dc/terms/license': {
+        category: ['legalAspects'],
+        label: ['License'],
+        allowNewValue: 1,
+        objectIViewer: ['BasicOptionView'],
+        objectIEditor: ['BasicOptionInput'],
+        options: [
+            {label: 'Open Data Commons Attribution License', value: 'http://www.opendatacommons.org/licenses/by/'},
+            {label: 'Creative Commons Attribution-ShareAlike', value: 'http://creativecommons.org/licenses/by-sa/3.0/'}
+        ],
+        allowUserDefinedValue: 1
+    }
+}
