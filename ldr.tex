@@ -1,6 +1,6 @@
 \documentclass{acm_proc_article-sp}
 \usepackage{hyperref}
-
+\usepackage{graphicx}
 \begin{document}
 
 \title{Adaptive Linked Data-driven Web Components:\\ Building Flexible and Reusable Semantic Web Interfaces}
@@ -298,10 +298,10 @@ In order to allow bootstrapping of LDA UIs, LD-R provides a comprehensive framew
 Semantic markup of data as discussed in Section \ref{sec:markup} is supported natively within the framework by embedding Microdata annotations within LD-R Web components.
 Additionally, in order to facilitate creation of components metadata, we developed a tool \footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in the JSON-LD format using \url{Schema.org} SoftwareApplication schema~\footnote{\url{https://schema.org/SoftwareApplication}}.
 
-\begin{figure}[tb]
-  \includegraphics[width=.9\linewidth]{images/screenshot.jpg}
-  \caption{An screenshot of RISIS metadata editor.}
-\end{figure}
+\begin{figure*}[ht] 
+  \includegraphics[width=1\linewidth]{images/screenshots.jpg}
+  \caption{An screenshot of RISIS metadata editor and datasets portal powered by the LD-R framework.}
+\end{figure*}
 
 \section{Use Cases}
 
