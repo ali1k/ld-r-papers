@@ -309,8 +309,27 @@ LD-R framewok is already in use within the RISIS~\footnote{\url{http://risis.eu}
 
 RISIS project with the aim of providing an infrastructure for research and innovation, targets researchers from various science and technology domains.
 LD-R approach was utilized in RISIS to help non-Linked Data experts to provide RDF-based metadata about their datasets~\footnote{\url{http://sms.risis.eu}} and then allowing researchers to search and request data based on the generated metadata~\footnote{\url{http://datasets.risis.eu}}.
+In order to expose a user-friendly interface to researchers, the following main configurations and components were required:
 
+\paragraph{Configurations}
+\begin{itemize}
+ \item The UI should be able to to render metadata properties in different categories.
+ \item The labels for properties should be changeable in the UI esp. in case of technical properties (e.g. RDF dump) unknown to researchers.
+ \item There should be a hint for properties to help metadata editors to understand the meaning of the property.
+ \item Instead of showing the full URIs, the UI should render either a shortened URI or a meaningful string linked to the original URI. 
+ \item When a DBpedia URI is provided, use the Wikipedia URI of the resource in the UI.
+ \item If a dropdown menu is provided, there should be the ability to accommoodate user-defined values which are not listed in the menu.
+ 
+\end{itemize}
 
+\paragraph{Components}
+\begin{itemize}
+ \item A component for \texttt{dcterms:spatial} values to allow searching and inserting resources from DBpedia based on the entity type (e.g. Place, Person, Organization, etc).
+ \item A component for \texttt{dcterms:subject} values to allow inserting and viewing DBpedia URIs as subject.
+ \item A component for \texttt{dcterms:language} values to allow inserting and viewing languages formatted in ISO 639-1 using standard URIs (e.g. \url{http://id.loc.gov/vocabulary/iso639-1/en}).
+ \item A component for \texttt{dcat:byteSize} values to allow inserting and viewing file size specified by a unit.
+  \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
+\end{itemize}
 
 
 \section{Discussion}
