@@ -9,17 +9,35 @@
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
 
-\lstdefinelanguage{json}{
-    basicstyle=\scriptsize\ttfamily,
-    numbers=left,
-    numberstyle=\scriptsize,
-    stepnumber=1,
-    numbersep=7pt,
-    showstringspaces=false,
-    breaklines=true,
-    frame=lines,
-    backgroundcolor=\color{background},
-    literate=
+
+% JSON listings
+\newcommand{\linenumberstyle}{\scriptsize}
+\lstdefinelanguage{json} {
+  sensitive=false, 
+  morestring=[b]"', 
+  showstringspaces=false
+}
+\lstset{
+  numberbychapter=false, 
+  language=json, 
+  basicstyle=\scriptsize\ttfamily, 
+  captionpos=b, 
+  % keywordstyle=\color[rgb]{0,0,0.7}, 
+  % stringstyle = \color[rgb]{0,0.5,0}, 
+  % identifierstyle=\color{orange}, 
+  commentstyle=\color[gray]{0.5}, 
+  backgroundcolor=\color[gray]{0.96}, 
+  framexleftmargin=1pt,
+  xleftmargin=4.4pt,
+  xrightmargin=3.4pt,
+  numbers=left, 
+  breaklines=true,
+  numberstyle=\linenumberstyle, 
+  frame=single, 
+  aboveskip=1.3em,
+  inputencoding=utf8,
+  extendedchars=true,
+   literate=
      *{0}{{{\color{numb}0}}}{1}
       {1}{{{\color{numb}1}}}{1}
       {2}{{{\color{numb}2}}}{1}
@@ -390,7 +408,7 @@ In the following, we present the list of main main requirements together with th
 resource: {
     'generic': {
         usePropertyCategories: 1,
-        propertyCategories: ['overview', 'people', 'date', 'legalAspects', 'technicalAspects', 'structuralAspects'],
+        propertyCategories: ['overview', 'legalAspects', 'technicalAspects'],
         resourceReactor: ['Resource'],
         shortenURI: 1
     }
