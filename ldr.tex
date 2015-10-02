@@ -109,15 +109,15 @@ The usage of semantic data is still quite limited and most of the currently publ
 
 %describe issues
 The current communication gap between Semantic Web developers and User Experience (UX) designers, driven by the need to bear Semantic Web knowledge, prevents streamline flow of best practices from UX community into the Linked Data user interfaces (UIs).
-The resulting lack of adoption and standardization makes current LDAs not often function consistent with user expectations and impels more development time and costs on LDA deveopers.
+The resulting lack of adoption and standardization makes current LDAs not often function consistent with user expectations and impels more development time and costs on LDA developers.
 In this situation, more time is spent in re-designing existing UIs rather than focusing on innovation and creation of sophisticated LDAs.
  
 This paper presents adaptive Linked Data-driven Web components as an approach to build flexible and reusable Semantic Web UIs.
 \emph{Web Components} are a set of W3C standards~\cite{webcomponentsW3C} that enable the creation of custom, reusable user interface widgets or components in Web documents and Web applications.  
 \emph{Resource Description Framework} (RDF), on the other hand, provides a common data model that allows data-driven components to be created, shared and integrated in a structured way across different applications.
-Linked Data-driven (LD-R) Web components as defiend in this paper are a species of Web components that employ RDF data model for representing their content and specification (i.e. metadata about the component).
+Linked Data-driven (LD-R) Web components as defined in this paper are a species of Web components that employ RDF data model for representing their content and specification (i.e. metadata about the component).
 LD-R components are supported by a set of predefined core Web components each representing a compartment of the RDF data model on the Web UI.
-LD-R components enable encapsualtion of the Semantic Web nature of an LDA thereby allow UX designers and Web developers outside the Semantic Web community to contribute to LDAs.
+LD-R components enable encapsulation of the Semantic Web nature of an LDA thereby allow UX designers and Web developers outside the Semantic Web community to contribute to LDAs.
 They also allow current Semantic Web developers to reuse existing Web components in their LDAs.
 Furthermore, LD-R components exploit the power and flexibility of RDF data model in describing and sharing resources to provide a mechanism to adapt the Web interfaces based on the meaning of data and user-defined rules. 
 %The RDF (Resource Description Framework) as the basic building block of the Semantic Web provides a general framework to describe resources on the Web.
@@ -125,7 +125,7 @@ Furthermore, LD-R components exploit the power and flexibility of RDF data model
 LD-R approach offers many benefits that we will describe in the remainder of the paper. Among them are:
 
 \paragraph{Bootstrapping LDA UIs} 
-LD-R components exploit best practices from modern Web application development to bring an exhaustive architecture to perform separation of concerns and thereby bootstrapping an LDA by only selecting a minimal relavant configuration.
+LD-R components exploit best practices from modern Web application development to bring an exhaustive architecture to perform separation of concerns and thereby bootstrapping an LDA by only selecting a minimal relevant configuration.
 For example, a developer only needs to set the URL of his in-use SPARQL endpoint and start developing the viewer components without dealing with the underlying connection adapters and data flow mediators in the system.
 
 \paragraph{Standardization and Reusability of LDA UIs} 
@@ -142,7 +142,7 @@ Engaging more UX designers and Web developers into LDA UIs will also result in m
 
 \section{Contributions and Outline}
 The contributions of this work are the concept of \emph{Adaptive LD-R Web components} and an open source implementation of it available at \url{http://ld-r.org}.
-Our primary claim is that adopting a component-based approach that encapsualtes the main concerns of a Semantic Web application, paves the way to reuse existing best practices from the UX community within the LDAs hence building more usable and pervasive LDAs.
+Our primary claim is that adopting a component-based approach that encapsulates the main concerns of a Semantic Web application, paves the way to reuse existing best practices from the UX community within the LDAs hence building more usable and pervasive LDAs.
 
 We explore this claim in stages.
 First, we collect some data about the current status of Semantic Web UI development.
@@ -171,10 +171,10 @@ Questions addressed the following topics:
 \emph{Knowldge of Semantic Web and Experience in developing LDAs.}
 As shown in \autoref{fig:userstudy}, the majority of participants (62\%) had proficient and expert knowledge of Semantic Web and Linked Data.
 In addition to the knowledge of Semantic Web, participants were asked about their LDA development experience.
-The result showed that the majority (61\%) were intermidiate and professional developers. 
+The result showed that the majority (61\%) were intermediate and professional developers. 
 
 \item
-\emph{Amount of time spent on bootstraping LDA UIs.}
+\emph{Amount of time spent on bootstrapping LDA UIs.}
  The results confirm that participants spend a lot of time on bootstrapping their applications before they can work on the UI.
  
 \item
@@ -208,12 +208,12 @@ For example, a viewer in the level of Dataset component can enable visualizing a
   \label{fig:architecture}
 \end{figure}
 
-The dataflow in the system starts from the \emph{Dataset} component which handles all the events related to a set of resources under a named graph identified using a URI.
+The data-flow in the system starts from the \emph{Dataset} component which handles all the events related to a set of resources under a named graph identified using a URI.
 The next level is the \emph{Resource} component which is identified by a URI and indicates what is described in the application.
 A resource is specified by a set of properties which are handled by the \emph{Property} component. 
 Properties can be either individual or aggregate when combining multiple features of a resource (e.g. a component that combines longitude and latitude properties; start data and end date properties for a date range, etc.).
-Each property is instantiated by an individual value or mutiple values in case of an aggreagte object. 
-The value(s) of properties are controled by the \emph{Value} component.
+Each property is instantiated by an individual value or multiple values in case of an aggregate object. 
+The value(s) of properties are controlled by the \emph{Value} component.
 Value component invokes different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 These components apply on individual and aggregate values (e.g. to show multiple coordinates on a map).
@@ -224,7 +224,7 @@ These components apply on individual and aggregate values (e.g. to show multiple
   \label{fig:microservices}
 \end{figure}
 
-In contrast to the centalized monolithic architecture, LD-R components comply with \emph{Microservices Architecture}~\cite{microservices}.
+In contrast to the centralized monolithic architecture, LD-R components comply with \emph{Microservices Architecture}~\cite{microservices}.
 As shown in \autoref{fig:microservices}, microservices architecture puts the main functionalities of a component into separate services (instead of in-memory function calls) and scales by distributing these services across servers, replicating as needed.
 This architectural style minimizes the redeploying of the entire application when changes in components occur.
 
@@ -240,9 +240,9 @@ This architectural style minimizes the redeploying of the entire application whe
 \end{figure}
 
 LD-R Web components provide a versatile approach for context adaptation.
-A context can be a specific domain of interest, a specific user requirment or both.
+A context can be a specific domain of interest, a specific user requirement or both.
 In order to enable customization and personalization, LD-R approach exploits the concept of \emph{Scope}.
-A scope is defiened as a hierarchical permutation of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
+A scope is defined as a hierarchical permutation of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specfic).
 Scopes are defined by using either the URIs of named graphs, resources and properties; or by identifying the resource types and data types.
 UI adaptation is handled by traversing the configs for scopes and overwriting the configs when a more specific scope is found.
@@ -250,7 +250,7 @@ For example, on the property level, we can define a generic configuration for al
 Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
 Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
-User-specifc configs provide different views on components and thereby data, based on the different personas dealing with those components and data.
+User-Specific configs provide different views on components and thereby data, based on the different personas dealing with those components and data.
 
 In addition to the fine-grained component customization, LD-R Web applications provide a fine-grained access control over the data through the component scopes.
 For example, an application developer can restrict access to a specific property of a specific resource in a certain dataset.
@@ -264,7 +264,7 @@ For example, an LD-R component created based on the Good Relations~\footnote{\ur
 In addition to automatic annotation of data provided by the LD-R Web components, LD-R approach offers semi-automatic markup of Web components by creating component metadata. 
 Component metadata consists of two categories of markup:
 \begin{itemize}
-\item Automatic markup generated by parsing component package specification -- metadata about the component and its dependencies. It inlcudes general metadata such as name, description, version, homepage, author as well as technical metadata on component source repository and dependencies.
+\item Automatic markup generated by parsing component package specification -- metadata about the component and its dependencies. It includes general metadata such as name, description, version, homepage, author as well as technical metadata on component source repository and dependencies.
 
 \item Manual markup created by component authors which addresses metadata such as component level (dataset, resource, property, value), granularity (individual, aggregate), mode (view, edit, browse) and config parameters specification.
 
@@ -287,19 +287,19 @@ As shown in \autoref{fig:lifecycle}, the LD-R components lifecycle encompasses f
 Since the LD-R approach focuses mainly on Linked Data applications, provision of RDF-compliant data is an essential phase in developing the LD-R components.
 There are different stages~\cite{AuerLOD2} in Linked Data provision such as data extraction, storage, interlinking, enrichment, quality analysis and repair which should be taken into account by data scientists and Linked Data experts.
 Once the data and schemata are provided to the LD-R component system, the system can bring a reciprocal value to Linked Data providers to better understand and curate the data when needed.
-For example, in case of geo-coordinates, by looking at a map component, data provider can easily curate the outlier data (e.g. ambigious entities) within a certain geo boundary.
+For example, in case of geo-coordinates, by looking at a map component, data provider can easily curate the outlier data (e.g. ambiguous entities) within a certain geo boundary.
 
 \item \emph{Component Developer}. 
 It includes UX designers and Web programmers who are involved in component fabrication.
 There are two types of Web components developed in this step:
 a) \emph{Core components} (cf. \autoref{fig:architecture}) which abstract the underlying RDF data model.
-These components are built-in to the system, however can still be overwritten by developers who have profficiency in Semantic Web and Linked Data.
+These components are built-in to the system, however can still be overwritten by developers who have proficiency in Semantic Web and Linked Data.
 b) \emph{Community-driven components} which exploit the core components.
 These components are either created from the scratch or by remixing and repurposing existing Web components found on the Web.
 
 \item \emph{Application Assembler}.
 The main task of application assembler is to identify the right components and configurations for the application; and to combine them in a way which fits the application requirement. 
-Within the LD-R component system, the metadata provided by each Web component faciliates the discovery of relavant components.
+Within the LD-R component system, the metadata provided by each Web component facilitates the discovery of relevant components.
 Having shared vocabularies on Linked Open Data allows assemblers to not only reuse components but also reuse the existing configurations and scopes published on the Web.
 For example, if there is already a suitable configuration for \texttt{RP} scope which uses \texttt{foaf:Person} as resource type and \texttt{dcterms:description} as property URI, the assembler can reuse that config within his application.
 
@@ -314,7 +314,7 @@ The end user is the one who requests developing a component and the one who send
 
 In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-R)} which is available online at \url{http://ld-r.org}.
 LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
-The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainablity, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
+The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainability, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
 \begin{figure}[tb]
   \includegraphics[width=.9\linewidth]{images/dataflow.jpg}
@@ -328,7 +328,7 @@ The main reasons we chose \emph{React} components over other existing Web Compon
   \label{fig:ldrFacets}
 \end{figure}
 
-As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favor of a unidirectional data flow. 
+As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
 The component interaction with SPARQL endpoints to retrieve and update Linked Data occurs via invoking RESTful services in actions.
 
@@ -359,7 +359,7 @@ Additionally, in order to facilitate creation of components metadata, we develop
 
 \section{Use Cases}
 
-LD-R framewok is already in use within the RISIS~\footnote{\url{http://risis.eu}} and OpenPhacts~\footnote{\url{http://www.openphacts.org}} projects.
+LD-R framework is already in use within the RISIS~\footnote{\url{http://risis.eu}} and OpenPhacts~\footnote{\url{http://www.openphacts.org}} projects.
 
 RISIS project with the aim of providing an infrastructure for research and innovation, targets researchers from various science and technology domains.
 LD-R approach was utilized in RISIS to help non-Linked Data experts to provide RDF-based metadata about their datasets~\footnote{\url{http://sms.risis.eu}} and then allowing researchers to search and request data based on the generated metadata~\footnote{\url{http://datasets.risis.eu}}.
@@ -373,7 +373,7 @@ In the following, we present the list of main main requirements together with th
  \item There should be a hint for properties to help metadata editors to understand the meaning of the property (\autoref{code:config} line 20,28, 41).
  \item Instead of showing the full URIs, the output UI should render either a shortened URI or a meaningful string linked to the original URI (\autoref{code:config} line 6). 
  \item When a DBpedia URI is provided, use the Wikipedia URI of the resource in the UI (\autoref{code:config} line 33,45).
- \item If a dropdown menu is provided, there should be the ability to accommoodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
+ \item If a dropdown menu is provided, there should be the ability to accommodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
  
 \end{compactitem}
 
@@ -458,7 +458,7 @@ link is \url{ldr.antonis.ops.labs.vu.nl/} now but maybe we can have a more conci
 
 \section{Related Work}
 The idea of component-based software engineering (CBSE) has attracted the attention of many researchers since 28 years ago and has led to many results being published in the research literature~\cite{Vale2015}.
-Within the Semantic Web community, the main focus has been on enriching current service-oriented architechtures (SOAs) by semantic formalisms and thereby providing Semantic Web services as reusable and scalable software components~\cite{sws2015}.
+Within the Semantic Web community, the main focus has been on enriching current service-oriented architectures (SOAs) by semantic formalisms and thereby providing Semantic Web services as reusable and scalable software components~\cite{sws2015}.
 There has been also a few attempts to create Semantic Web Components by integrating existing Web-based components with Semantic Web technology~\cite{pahl2011}.
 When it comes to component-based development of LDAs, the works typically fall into 
 software application frameworks that address building scalable LDAs in a modular way.
@@ -470,23 +470,23 @@ WYSIWYM (What You See Is What You Mean)~\cite{WYSIWYM2014} is a very generic sem
 Our proposed LD-R approach utilizes the WYSIWYM model for binding RDF-based data to viewer, editor and browser UIs.
 Uduvudu~\cite{Uduvudu2015} is another approach to make an adaptive RDF-based UI engine to render Linked Data.
 Instead of adopting Web components, Uduvudu employs a set of flexible UI templates that can be combined to create complex UIs. 
-Even though in contrast to Web components, the static templates do not provide enough interactions for editing and browsing data, we believe that algorithms for automatic selection of templates employed in Uduvudu can be reused in the LD-R frameowork for automatic generation of configurations.
+Even though in contrast to Web components, the static templates do not provide enough interactions for editing and browsing data, we believe that algorithms for automatic selection of templates employed in Uduvudu can be reused in the LD-R framework for automatic generation of configurations.
 Another similar approach is SemwidgJS~\cite{StegemannZ14} which brings a semantic Widget library for the rapid development of LDA UIs.
 SemwidgJS offers a simplified query language to allow the navigation of graph-based data by ordinary Web developers.
 The main difference between LD-R and SemwidgJS is that LD-R suggests a more interactive model which is not only for displaying Linked Data but also for providing user adaptations based on the meaning of data.
 LD-Viewer~\cite{Lukovnikov2014} is another related Linked Data presentation framework particularly tailored for the presentation of DBpedia resources.
-In contrast to LD-R, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowldge of RDF which puts a burden on non-Semantic Web developers.
+In contrast to LD-R, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowledge of RDF which puts a burden on non-Semantic Web developers.
 
 In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked Data visualization and exploration such as Balloon Synopsis~\cite{BalloonSchlegelWSGK14} and Sgvizler~\cite{Sgvizler} which can still be utilized as Web components within the LD-R framework. 
-In overal, what distinguishes LD-R from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and resuable UIs as its first class citizen.
+In overall, what distinguishes LD-R from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and reusable UIs as its first class citizen.
 
 \section{Conclusion}
 This paper presented adaptive Linked Data-driven Web components as a solution to increase the usability of current Linked Data applications.
 The proposed component-based solution emphasizes the reusability and separation of concerns in respect to developing Linked Data applications.
 The RDF-based UI adaptation mechanism aims to provide a better customization and personalization based on the meaning of data.
-Furthermore, employing standard Web components aspires to bring a better communication between UX designers and Semantic Web developers in order to reuse best UI practices withink Linked Data applications.
+Furthermore, employing standard Web components aspires to bring a better communication between UX designers and Semantic Web developers in order to reuse best UI practices within Linked Data applications.
 
-As our futute plans, we envisage to create a cloud infrastructure to share and reuse LD-R configurations and components without the need to install the framework.
+As our future plans, we envisage to create a cloud infrastructure to share and reuse LD-R configurations and components without the need to install the framework.
 We also plan to make a user interface to facilitate creation of the LD-R scopes and configurations.
 Another direction for future research is developing mechanisms for automatic composition of Web components based on the provided semantic markup.
 
