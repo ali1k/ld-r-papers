@@ -113,8 +113,8 @@ The resulting lack of adoption and standardization makes current LDAs not often 
 In this situation, more time is spent in re-designing existing UIs rather than focusing on innovation and creation of sophisticated LDAs.
  
 This paper presents adaptive Linked Data-driven Web components as an approach to build flexible and reusable Semantic Web UIs.
-\emph{Web Components} are a set of W3C standards~\cite{webcomponentsW3C} that enable the creation of reusable widgets or components in Web documents and Web applications.
-Resource Description Framework (RDF), on the other hand, provides a common data model that allows data-driven components to be created, shared and integrated in a structured way across different applications.
+\emph{Web Components} are a set of W3C standards~\cite{webcomponentsW3C} that enable the creation of custom, reusable user interface widgets or components in Web documents and Web applications.  
+\emph{Resource Description Framework} (RDF), on the other hand, provides a common data model that allows data-driven components to be created, shared and integrated in a structured way across different applications.
 Linked Data-driven (LD-R) Web components as defiend in this paper are a species of Web components that employ RDF data model for representing their content and specification (i.e. metadata about the component).
 LD-R components are supported by a set of predefined core Web components each representing a compartment of the RDF data model on the Web UI.
 LD-R components enable encapsualtion of the Semantic Web nature of an LDA thereby allow UX designers and Web developers outside the Semantic Web community to contribute to LDAs.
@@ -156,20 +156,20 @@ Finally, we discuss the implementation of our idea and its usage in real-world s
 \end{figure*}
 
 \section{The Current Status of Linked Data User Interface Development}
-In order to understand the current pitfalls of LDA UI design, we conducted a survey targeting \textbf{73} active Semantic Web developers~\footnote{results are available at \url{https://goo.gl/cltqhv}}.
+In order to understand the current pitfalls of LDA UI design, we conducted a survey targeting \textbf{74} active Semantic Web developers~\footnote{results are available at \url{https://goo.gl/cltqhv}}.
 The participants where selected from the community of Semantic Web developers on Github who have had at least one active Semantic Web-related repository.
 We used Github APIs~\footnote{\url{https://developer.github.com/v3/}} to search~\footnote{keywords: "Semantic Web" OR "Linked Data" OR "RDF" OR "SPARQL"} for the potential Semantic Web repositories and then to collect the contact information of the corresponding contributors when available.
 The search, after removing the organizations and invalid email addresses, resulted in 650 potential Semantic Web developers.
 We then contacted the potential candidates to ask them about the current pitfalls in developing LDA UIs.
 In our enquiry, we clearly mentioned to skip the questionnaire if they have not developed any Semantic Web application so far.
 We used a set of 7 minimal viable questions to attract more people and also used inline forms for GMail users to allow filling out the questionnaire in the same time that reading the enquiry email.
-The number of participants who filled in our questionnaire at the end was 73 (almost 11\% of the potential candidates which is still a considerable number of participants).
+The number of participants who filled in our questionnaire at the end was 74 (almost 11.5\% of the potential candidates which is still a considerable number of participants).
 Questions addressed the following topics:
 \begin{compactitem}
 
 \item
 \emph{Knowldge of Semantic Web and Experience in developing LDAs.}
-As shown in \autoref{fig:userstudy}, the majority of participants (63\%) had proficient and expert knowledge of Semantic Web and Linked Data.
+As shown in \autoref{fig:userstudy}, the majority of participants (62\%) had proficient and expert knowledge of Semantic Web and Linked Data.
 In addition to the knowledge of Semantic Web, participants were asked about their LDA development experience.
 The result showed that the majority (61\%) were intermidiate and professional developers. 
 
@@ -184,12 +184,12 @@ This might be because of the lack of modularity and common standards in existing
 
 \item
 \emph{Adoption of current Web Components by Semantic Web developers.}
-The results indicate that despite the prevalence of Web Components solutions, only 17\% of the participants were employing them in their applications.
-Interestingly, the majority of participants (51\%) were already reusing other component-like libraries which provides an attitude and capacity towards adopting the Web components.
+The results indicate that despite the prevalence of Web Components solutions, only 19\% of the participants were employing them in their applications.
+Interestingly, the majority of participants (50\%) were already reusing other component-like libraries which provides an attitude and capacity towards adopting the Web components.
 
 \item
 \emph{Issues with non-Semantic Web developers to create LDA UIs.}
-Among the participant, 52\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start collaborating on the application.
+Among the participant, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start collaborating on the application.
 
 \end{compactitem}
 
@@ -323,6 +323,12 @@ The main reasons we chose \emph{React} components over other existing Web Compon
   \label{fig:dataflow}
 \end{figure}
 
+\begin{figure}[htb] 
+  \includegraphics[width=1\linewidth]{images/facets.jpg}
+  \caption{An screenshot of LD-R faceted browser.}
+  \label{fig:ldrFacets}
+\end{figure}
+
 As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favor of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
 The component interaction with SPARQL endpoints to retrieve and update Linked Data occurs via invoking RESTful services in actions.
@@ -342,11 +348,6 @@ In order to allow bootstrapping of LDA UIs, LD-R provides a comprehensive framew
 
 \end{itemize}
 
-\begin{figure*}[ht] 
-  \includegraphics[width=1\linewidth]{images/facetsviewedit.jpg}
-  \caption{(left) LD-R faceted browser, (top right) Individual view and edit, (bottom right) Aggregate view and edit.}
-  \label{fig:ldrScreenshot}
-\end{figure*}
 
 Semantic markup of data as discussed in Section \ref{sec:markup} is supported natively within the framework by embedding Microdata annotations within LD-R Web components.
 Additionally, in order to facilitate creation of components metadata, we developed a tool \footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in the JSON-LD format using \url{Schema.org} SoftwareApplication schema~\footnote{\url{https://schema.org/SoftwareApplication}}.
@@ -463,6 +464,9 @@ Web Components and the Semantic Web~\cite{pahl2011}
 Existing tools to view/edit and browse LD e.g. OntoWiki~\cite{ontowiki-swj}, Saha
 
 Semantic Widget Library for the Rapid Development of User Interfaces for Linked Open Data~\cite{StegemannZ14}
+
+Callimachus is a highly scalable platform for creating and running data-driven websites
+http://callimachusproject.org/
 
 LD Viewer - Linked Data Presentation Framework~\cite{Lukovnikov2014}, Uduvudu: a Graph-Aware and Adaptive UI Engine for Linked Data~\cite{Uduvudu2015}
 
