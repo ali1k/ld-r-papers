@@ -189,7 +189,7 @@ Interestingly, the majority of participants (50\%) were already reusing other co
 
 \item
 \emph{Issues with non-Semantic Web developers to create LDA UIs.}
-Among the participant, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start collaborating on the application.
+Among the participant, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start contributing to the application.
 
 \end{compactitem}
 
@@ -208,7 +208,7 @@ For example, a viewer in the level of Dataset component can enable visualizing a
   \label{fig:architecture}
 \end{figure}
 
-The dataflow in the application starts from the \emph{Dataset} component which handles all the events related to a set of resources under a named graph identified using a URI.
+The dataflow in the system starts from the \emph{Dataset} component which handles all the events related to a set of resources under a named graph identified using a URI.
 The next level is the \emph{Resource} component which is identified by a URI and indicates what is described in the application.
 A resource is specified by a set of properties which are handled by the \emph{Property} component. 
 Properties can be either individual or aggregate when combining multiple features of a resource (e.g. a component that combines longitude and latitude properties; start data and end date properties for a date range, etc.).
@@ -216,7 +216,7 @@ Each property is instantiated by an individual value or mutiple values in case o
 The value(s) of properties are controled by the \emph{Value} component.
 Value component invokes different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
-These components apply on individual and aggregate values (e.g. to show multiple coordinates on a the map).
+These components apply on individual and aggregate values (e.g. to show multiple coordinates on a map).
 
 \begin{figure}[tb]
   \includegraphics[width=.8\linewidth]{images/microservices.jpg}
@@ -225,7 +225,7 @@ These components apply on individual and aggregate values (e.g. to show multiple
 \end{figure}
 
 In contrast to the centalized monolithic architecture, LD-R components comply with \emph{Microservices Architecture}~\cite{microservices}.
-As shown in \autoref{fig:microservices}, microservices architecture puts the main functionalities of a component into separete services (instead of in-memory function calls) and scales by distributing these services across servers, replicating as needed.
+As shown in \autoref{fig:microservices}, microservices architecture puts the main functionalities of a component into separate services (instead of in-memory function calls) and scales by distributing these services across servers, replicating as needed.
 This architectural style minimizes the redeploying of the entire application when changes in components occur.
 
 
@@ -252,9 +252,8 @@ Another example would be having a different rendering for all resources of a spe
 Scopes can also be defined under a specific user which facilitates versioning and reuse of user-specific configs.
 User-specifc configs provide different views on components and thereby data, based on the different personas dealing with those components and data.
 
-In addition to the fine-grained component customization, LD-R Web applications provide a fine-grained access control over the data provided by the components.
-RDF-based access control in LD-R applications operates at four different granularities provided by the Dataset, Resource, Property and Value component levels and scopes.
-For example, application developer can restrict access to a specific property of a specific resource in a certain dataset.
+In addition to the fine-grained component customization, LD-R Web applications provide a fine-grained access control over the data through the component scopes.
+For example, an application developer can restrict access to a specific property of a specific resource in a certain dataset.
 
 \subsection{Semantic Markup for Web Components}
 \label{sec:markup}
