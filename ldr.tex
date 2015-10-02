@@ -327,6 +327,11 @@ The end user is the one who requests developing a component and the one who send
 
 \end{itemize}
 
+\begin{figure}[tb]
+  \includegraphics[width=.9\linewidth]{images/dataflow.jpg}
+  \caption{Data flow in the LD-R framework.}
+  \label{fig:dataflow}
+\end{figure}
 
 \section{Implementation}
 
@@ -334,15 +339,15 @@ In order to realize the idea of adaptive Linked Data-driven Web components, we i
 LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainability, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
-\begin{figure}[tb]
-  \includegraphics[width=.9\linewidth]{images/dataflow.jpg}
-  \caption{Data flow in the LD-R framework.}
-  \label{fig:dataflow}
+\begin{figure}[tb] 
+  \includegraphics[width=1\linewidth]{images/viewedit.png}
+  \caption{An screenshot of LD-R view and edit mode for individual (top) and aggregate (bottom) values.}
+  \label{fig:ldrFacets}
 \end{figure}
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/facets.jpg}
-  \caption{An screenshot of LD-R faceted browser.}
+  \caption{An screenshot of LD-R browse mode.}
   \label{fig:ldrFacets}
 \end{figure}
 
