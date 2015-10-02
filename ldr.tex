@@ -313,7 +313,7 @@ The end user is the one who requests developing a component and the one who send
 \section{Implementation}
 
 In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-R)} which is available online at \url{http://ld-r.org}.
-LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
+LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainablity, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
 \begin{figure}[tb]
@@ -481,13 +481,14 @@ In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked 
 In overal, what distinguishes LD-R from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and resuable UIs as its first class citizen.
 
 \section{Conclusion}
-In this paper, we presented
+This paper presented adaptive Linked Data-driven Web components as a solution to increase the usability of current Linked Data applications.
+The proposed component-based solution emphasizes the reusability and separation of concerns in respect to developing Linked Data applications.
+The RDF-based UI adaptation mechanism aims to provide a better customization and personalization based on the meaning of data.
+Furthermore, employing standard Web components aspires to bring a better communication between UX designers and Semantic Web developers in order to reuse best UI practices withink Linked Data applications.
 
-Future work: UI for generating configs, automatic generation of configs and component composition
-
-Vision: a repository of LD-R Web components
-
-A cloud service hosting configs and components
+As our futute plans, we envisage to create a cloud infrastructure to share and reuse LD-R configurations and components without the need to install the framework.
+We also plan to make a user interface to facilitate creation of the LD-R scopes and configurations.
+Another direction for future research is developing mechanisms for automatic composition of Web components based on the provided semantic markup.
 
 \section{Aknowledgement}
 We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-R framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
