@@ -459,23 +459,29 @@ link is \url{ldr.antonis.ops.labs.vu.nl/} now but maybe we can have a more conci
 \section{Related Work}
 The idea of component-based software engineering (CBSE) has attracted the attention of many researchers since 28 years ago and has led to many results being published in the research literature~\cite{Vale2015}.
 Within the Semantic Web community, the main focus has been on enriching current service-oriented architechtures (SOAs) by semantic formalisms and thereby providing Semantic Web services as reusable and scalable software components~\cite{sws2015}.
+There has been also a few attempts to create Semantic Web Components by integrating existing Web-based components with Semantic Web technology~\cite{pahl2011}.
+When it comes to component-based development of LDAs, the works typically fall into 
+software application frameworks that address building scalable LDAs in a modular way.
+In most of the current full-stack LDA frameworks such as Callimachus~\footnote{\url{http://callimachusproject.org/}} and LDIF~\footnote{\url{http://ldif.wbsg.de/}} the focus is mainly on the backend side of LDAs and less attention is paid on how Linked Data is consumed by the end-user. 
+There are also more flexible application frameworks such as OntoWiki~\cite{ontowiki-swj} which provide UI widgets and extensions to expose Linked Data to non-Semantic Web end-users.
 
-To the best of our knowledge, LD-R is the first attemp to build a component-based application framework that addresses user interface as it first class citizen.
+Besides these generic LDA frameworks, there are also approaches that focus on the development of user interfaces for LDAs.
+WYSIWYM (What You See Is What You Mean)~\cite{WYSIWYM2014} is a very generic semantics-based UI model to allow integrated visualization, exploration and authoring of structured and unstructured data.
+Our proposed LD-R approach utilizes the WYSIWYM model for binding RDF-based data to viewer, editor and browser UIs.
+Uduvudu~\cite{Uduvudu2015} is another approach to make an adaptive RDF-based UI engine to render Linked Data.
+Instead of adopting Web components, Uduvudu employs a set of flexible UI templates that can be combined to create complex UIs. 
+Even though in contrast to Web components, the static templates do not provide enough interactions for editing and browsing data, we believe that algorithms for automatic selection of templates employed in Uduvudu can be reused in the LD-R frameowork for automatic generation of configurations.
+Another similar approach is SemwidgJS~\cite{StegemannZ14} which brings a semantic Widget library for the rapid development of LDA UIs.
+SemwidgJS offers a simplified query language to allow the navigation of graph-based data by ordinary Web developers.
+The main difference between LD-R and SemwidgJS is that LD-R suggests a more interactive model which is not only for displaying Linked Data but also for providing user adaptations based on the meaning of data.
+LD-Viewer~\cite{Lukovnikov2014} is another related Linked Data presentation framework particularly tailored for the presentation of DBpedia resources.
+In contrast to LD-R, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowldge of RDF which puts a burden on non-Semantic Web developers.
 
-Web Components and the Semantic Web~\cite{pahl2011}
-
-Existing tools to view/edit and browse LD e.g. OntoWiki~\cite{ontowiki-swj}, Saha
-
-Semantic Widget Library for the Rapid Development of User Interfaces for Linked Open Data~\cite{StegemannZ14}
-
-Callimachus is a highly scalable platform for creating and running data-driven websites
-http://callimachusproject.org/
-
-LD Viewer - Linked Data Presentation Framework~\cite{Lukovnikov2014}, Uduvudu: a Graph-Aware and Adaptive UI Engine for Linked Data~\cite{Uduvudu2015}
-
-WYSIWYM~\cite{WYSIWYM2014}
+In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked Data visualization and exploration such as Balloon Synopsis~\cite{BalloonSchlegelWSGK14} and Sgvizler~\cite{Sgvizler} which can still be utilized as Web components within the LD-R framework. 
+In overal, what distinguishes LD-R from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and resuable UIs as its first class citizen.
 
 \section{Conclusion}
+In this paper, we presented
 
 Future work: UI for generating configs, automatic generation of configs and component composition
 
