@@ -174,22 +174,22 @@ Finally, we discuss the implementation of our idea and its usage in real-world s
 \end{figure*}
 
 \section{The Current Status of Linked Data User Interface Development}
-In order to understand the current pitfalls of LDA UI design, we conducted a survey targeting \textbf{74} active Semantic Web developers~\footnote{results are available at \url{https://goo.gl/cltqhv}}.
+In order to understand the current pitfalls of LDA UI design, we conducted a survey targeting \textbf{75} active Semantic Web developers~\footnote{results are available at \url{https://goo.gl/cltqhv}}.
 The participants where selected from the community of Semantic Web developers on Github who have had at least one active Semantic Web-related repository.
 We used Github APIs~\footnote{\url{https://developer.github.com/v3/}} to search~\footnote{keywords: "Semantic Web" OR "Linked Data" OR "RDF" OR "SPARQL"} for the potential Semantic Web repositories and then to collect the contact information of the corresponding contributors when available.
 The search, after removing the organizations and invalid email addresses, resulted in 650 potential Semantic Web developers.
 We then contacted the potential candidates to ask them about the current pitfalls in developing LDA UIs.
 In our enquiry, we clearly mentioned to skip the questionnaire if they have not developed any Semantic Web application so far.
 We used a set of 7 minimal viable questions to attract more people and also used inline forms for GMail users to allow filling out the questionnaire in the same time that reading the enquiry email.
-The number of participants who filled in our questionnaire at the end was 74 (almost 11.5\% of the potential candidates which is still a considerable number of participants).
+The number of participants who filled in our questionnaire at the end was 75 (almost 11.5\% of the potential candidates which is still a considerable number of participants).
 Questions addressed the following topics:
 \begin{compactitem}
 
 \item
 \emph{Knowldge of Semantic Web and Experience in developing LDAs.}
-As shown in \autoref{fig:userstudy}, the majority of participants (62\%) had proficient and expert knowledge of Semantic Web and Linked Data.
+As shown in \autoref{fig:userstudy}, the majority of participants (63\%) had proficient and expert knowledge of Semantic Web and Linked Data.
 In addition to the knowledge of Semantic Web, participants were asked about their LDA development experience.
-The result showed that the majority (61\%) were intermediate and professional developers. 
+The result showed that the majority (60\%) were intermediate and professional developers. 
 
 \item
 \emph{Amount of time spent on bootstrapping LDA UIs.}
@@ -201,9 +201,13 @@ The results indicate that a considerable amount of users (46\%), prefer to write
 This might be because of the lack of modularity and common standards in existing LDAs.
 
 \item
+\emph{Adaptation of LDA UIs.}
+Among the participant, 52\% had experience adapting the user interface of their applications frequently.
+
+\item
 \emph{Adoption of current Web Components by Semantic Web developers.}
 The results indicate that despite the prevalence of Web Components solutions, only 19\% of the participants were employing them in their applications.
-Interestingly, the majority of participants (50\%) were already reusing other component-like libraries which provides an attitude and capacity towards adopting the Web components.
+Interestingly, the majority of participants (49\%) were already reusing other component-like libraries which provides an attitude and capacity towards adopting the Web components.
 
 \item
 \emph{Issues with non-Semantic Web developers to create LDA UIs.}
@@ -470,6 +474,8 @@ property: {
     }   
 }
 \end{lstlisting}
+
+Todo: write about reusing existing react components like Google Map
 
 \autoref{fig:risisScreenshot} shows an screenshot of the generated UIs for metadata and search.
 
