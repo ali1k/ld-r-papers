@@ -324,7 +324,7 @@ These components are either created from the scratch or by remixing and repurpos
 The main task of application assembler is to identify the right components and configurations for the application; and to combine them in a way which fits the application requirement. 
 Within the LD-R component system, the metadata provided by each Web component facilitates the discovery of relevant components.
 Having shared vocabularies on Linked Open Data allows assemblers to not only reuse components but also reuse the existing configurations and scopes published on the Web.
-For example, if there is already a suitable configuration for \texttt{RP} scope which uses \texttt{foaf:Person} as resource type and \texttt{dcterms:description} as property URI, the assembler can reuse that config within his application.
+For example, if there is already a suitable configuration for \texttt{RP} scope which uses \texttt{foaf:Person} as resource type and ~\texttt{dcterms:description} as property URI, the assembler can reuse that config within his application.
 
 \item \emph{End User}. 
 It is the user who experiences working with components to pursue his goals on a certain application domain.
@@ -347,13 +347,13 @@ The main reasons we chose \emph{React} components over other existing Web Compon
 \begin{figure}[tb] 
   \includegraphics[width=1\linewidth]{images/viewedit.png}
   \caption{An screenshot of LD-R view and edit mode for individual (top) and aggregate (bottom) values.}
-  \label{fig:ldrFacets}
+  \label{fig:ldrViewEdit}
 \end{figure}
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/facets.jpg}
   \caption{An screenshot of LD-R browse mode.}
-  \label{fig:ldrFacets}
+  \label{fig:ldrBrowse}
 \end{figure}
 
 As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
@@ -375,6 +375,10 @@ In order to allow bootstrapping of LDA UIs, LD-R provides a comprehensive framew
 
 \end{itemize}
 
+There are three modes of interactions within LD-R components namely \emph{view}, \emph{browse} and \emph{edit} mode.
+These modes work with two types of value granularity: individual and aggregate.
+As shown in \autoref{fig:ldrViewEdit}, components can target individual values or interact with aggregate values when users want to show/update multiple values at once.
+\autoref{fig:ldrBrowse} depicts the browse mode where individual (e.g. item lists with check boxes) and aggregate data browser (e.g. data sliders or maps) component can be employed.
 
 Semantic markup of data as discussed in Section \ref{sec:markup} is supported natively within the framework by embedding Microdata annotations within the LD-R Web components.
 Additionally, in order to facilitate creation of components metadata, we developed a tool \footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in the JSON-LD format using \url{Schema.org} SoftwareApplication schema~\footnote{\url{https://schema.org/SoftwareApplication}}.
