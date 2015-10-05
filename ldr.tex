@@ -341,7 +341,7 @@ The end user is the one who requests developing a component and the one who send
 
 In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-R)} which is available online at \url{http://ld-r.org}.
 LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
-The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainability, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
+The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainability, native multi-platform support, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
 \begin{figure}[tb] 
   \includegraphics[width=1\linewidth]{images/viewedit.png}
@@ -475,10 +475,9 @@ property: {
 }
 \end{lstlisting}
 
-Todo: write about reusing existing react components like Google Map
-
+The required components were built on the mircoservice architecture where we could reuse existing ReactJS components extended by complementary Linked Data services.
+For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with a DBpedia query service to retrieve the coordinates for the DBpedia resource values.
 \autoref{fig:risisScreenshot} shows an screenshot of the generated UIs for metadata and search.
-
 
 Todo: add a short description for OpenPhacts LD-R implementation.
 link is \url{ldr.antonis.ops.labs.vu.nl/} now but maybe we can have a more concise link.
