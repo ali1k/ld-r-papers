@@ -241,19 +241,6 @@ Value component invokes different components to view, edit and browse the proper
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 These components apply on individual and aggregate values (e.g. to show multiple coordinates on a map).
 
-\begin{figure}[htb]
-  \includegraphics[width=.8\linewidth]{images/microservices.jpg}
-  \caption{Monoliths vs. Microservices~\cite{microservices}}
-  \label{fig:microservices}
-\end{figure}
-
-In contrast to the centralized monolithic architecture, LD-R components comply with \emph{Microservices Architecture}~\cite{microservices}.
-As shown in \autoref{fig:microservices}, microservices architecture puts the main functionalities of a component into separate services (instead of in-memory function calls) and scales by distributing these services across servers, replicating as needed.
-This architectural style minimizes the redeploying of the entire application when changes in components occur.
-
-
-%\cite{SmartComposition2015}
-
 \subsection{Scopes and Configurations}
 
 \begin{figure}[tb]
@@ -344,18 +331,6 @@ In order to realize the idea of adaptive Linked Data-driven Web components, we i
 LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 The main reasons we chose \emph{React} components over other existing Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity of the technology, maintainability, native multi-platform support, number of developer tools/components/applications, and efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
-\begin{figure}[tb] 
-  \includegraphics[width=1\linewidth]{images/viewedit.png}
-  \caption{An screenshot of LD-R view and edit mode for individual (top) and aggregate (bottom) values.}
-  \label{fig:ldrViewEdit}
-\end{figure}
-
-\begin{figure}[htb] 
-  \includegraphics[width=1\linewidth]{images/facets.jpg}
-  \caption{An screenshot of LD-R browse mode.}
-  \label{fig:ldrBrowse}
-\end{figure}
-
 As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the components that are affected. 
 The component interaction with SPARQL endpoints to retrieve and update Linked Data occurs via invoking RESTful services in actions.
@@ -374,6 +349,31 @@ In order to allow bootstrapping of LDA UIs, LD-R provides a comprehensive framew
 \item A baisc access control plugin which allows restricting read/write access to data.
 
 \end{itemize}
+
+%\begin{figure}[htb]
+%  \includegraphics[width=.8\linewidth]{images/microservices.jpg}
+%  \caption{Monoliths vs. Microservices~\cite{microservices}}
+%  \label{fig:microservices}
+%\end{figure}
+%
+%In contrast to the centralized monolithic architecture, LD-R implementation is compliant with \emph{Microservices Architecture}~\cite{microservices}.
+%As shown in \autoref{fig:microservices}, in the microservices architecture, the main functionalities of an LDA are put into separate decoupled components which can be implemented by different developers.
+% and they scale by distributing these services across servers, replicating as needed.
+%This architectural style minimizes the redeploying of the entire application when changes in components occur and facilitates testability of the components.
+
+%\cite{SmartComposition2015}
+
+\begin{figure}[htb] 
+  \includegraphics[width=1\linewidth]{images/viewedit.png}
+  \caption{An screenshot of LD-R view and edit mode for individual (top) and aggregate (bottom) values.}
+  \label{fig:ldrViewEdit}
+\end{figure}
+
+\begin{figure}[htb] 
+  \includegraphics[width=1\linewidth]{images/facets.jpg}
+  \caption{An screenshot of LD-R browse mode.}
+  \label{fig:ldrBrowse}
+\end{figure}
 
 There are three modes of interactions within LD-R components namely \emph{view}, \emph{browse} and \emph{edit} mode.
 These modes work with two types of value granularity: individual and aggregate.
