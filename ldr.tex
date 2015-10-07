@@ -225,7 +225,7 @@ As depicted in \autoref{fig:architecture}, there are 4 main component levels in 
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
 For example, a viewer in the level of Dataset component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of Resource component can only allow visualizing properties of a specific resource (or a specific type of resource).
 
-\begin{figure}[tb]
+\begin{figure}[htb]
   \includegraphics[width=1\linewidth]{images/architecture.jpg}
   \caption{LD-R components architecture.}
   \label{fig:architecture}
@@ -241,7 +241,7 @@ Value component invokes different components to view, edit and browse the proper
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
 These components apply on individual and aggregate values (e.g. to show multiple coordinates on a map).
 
-\begin{figure}[tb]
+\begin{figure}[htb]
   \includegraphics[width=.8\linewidth]{images/microservices.jpg}
   \caption{Monoliths vs. Microservices~\cite{microservices}}
   \label{fig:microservices}
@@ -525,7 +525,6 @@ Another direction for future research is developing mechanisms for automatic com
 
 \section{Aknowledgement}
 We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-R framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
-
 
 \bibliographystyle{abbrv}
 \bibliography{refs}
