@@ -193,9 +193,9 @@ The result showed that the majority (60\%) of participants were intermediate and
 In addition to the development experience, developers were asked about their knowledge of Semantic Web to compare their practical and conceptual experience.
 As results revealed, the majority of participants (63\%) had proficient (4-5 years) and expert (more than 5 years) knowledge of Semantic Web and Linked Data which makes a good sample for our evaluation. 
 
-\paragraph{Questions}
+
 Questions addressed the following topics:
-\begin{compactitem}
+\begin{itemize}
 
 \item
 \emph{Amount of time spent on bootstrapping LDA UIs.}
@@ -224,20 +224,28 @@ In order to examine if there is a communication gap between UI designers and Sem
 Among the participants, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start contributing to the application.
 The distribution of this issue among more experienced developers (45\% of the intermediate and advanced users) further emphasizes the importance of this communication gap.
 
-\end{compactitem}
+\end{itemize}
+
+\begin{figure}[htb]
+	\center
+  \includegraphics[width=0.60\linewidth]{images/framework.pdf}
+  \caption{Main elements of the adaptive LD-R Web components architecture.}
+  \label{fig:framework}
+\end{figure}
 
 \section{Adaptive Linked Data-driven Web Components}
-In order to streamline the process of UI development in LDAs, we propose an architecture of adaptive LD-R components -- Web components enriched by the RDF data model.
+In order to streamline the process of UI development in LDAs, we propose an architecture (cf. \autoref{fig:framework}) of adaptive LD-R Web components -- Web components enriched by the RDF data model.
+
 In the following sections, the main elements of the architecture are described:
 
 \subsection{LD-R Web Components}
-As depicted in \autoref{fig:architecture}, there are 4 main component levels in an LD-R Web application.
+As depicted in \autoref{fig:architecture}, there are 4 core component levels in an LD-R Web application.
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
 For example, a viewer in the level of Dataset component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of Resource component can only allow visualizing properties of a specific resource (or a specific type of resource).
 
 \begin{figure}[htb]
   \includegraphics[width=1\linewidth]{images/architecture.jpg}
-  \caption{LD-R components architecture.}
+  \caption{Core LD-R Web components.}
   \label{fig:architecture}
 \end{figure}
 
@@ -430,6 +438,13 @@ In the following, we present the main requirements for configurations and compon
   \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
 \end{compactitem}
 
+
+The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
+For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
+In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
+This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
+\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
+
 \begin{lstlisting}[language=json,firstnumber=1, label=code:config, caption=An excerpt of the LD-R configuration for RISIS.]
 resource: {
     `generic': {
@@ -492,12 +507,6 @@ property: {
 }
 \end{lstlisting}
 
-The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
-For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
-In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
-This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
-\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
-
 \subsection{Open PHACTS}
 
 The Open PHACTS Discovery Platform has been developed to reduce barriers to drug discovery, by collecting and integrating a large number of prominent RDF datasets in the pharmacology domain. The platform provides a uniform RESTful API for application developers to access the integrated data.
@@ -558,6 +567,8 @@ Furthermore, employing standard Web components aspires to bring a better communi
 As our future plan, we envisage to create a cloud infrastructure to share and reuse LD-R configurations and components without the need to install the framework.
 We also plan to make a user interface to facilitate creation of the LD-R scopes and configurations.
 Another direction for future research is developing mechanisms for the automatic composition of Web components based on the semantic markup provided.
+
+\newpage
 
 \section{Aknowledgement}
 We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-R framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
