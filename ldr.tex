@@ -222,7 +222,7 @@ As our study shows, within the current LDA developers, 52\% had experience adapt
 \emph{Issues with non-Semantic Web developers to create LDA UIs.}
 In order to examine if there is a communication gap between UI designers and Semantic Web developers, we asked the participants about their experience when collaborating with a non-SW developer.
 Among the participants, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start contributing to the application.
-The distribution of this issue among more experienced developers (45\% of the intermediate and advanced users) further emphasizes the importance of this communication gap.
+The distribution of this issue among more experienced developers (45\% of the intermediate and advanced users) further emphasizes the importance of this communication gap.\\~\\
 
 \end{itemize}
 
@@ -234,8 +234,8 @@ The distribution of this issue among more experienced developers (45\% of the in
 \end{figure}
 
 \section{Adaptive Linked Data-driven Web Components}
-In order to streamline the process of UI development in LDAs, we propose an architecture (cf. \autoref{fig:framework}) of adaptive LD-R Web components -- Web components enriched by the RDF data model.
-
+In order to streamline the process of UI development in LDAs, we propose an architecture of adaptive LD-R Web components (cf. \autoref{fig:framework}).
+%-- Web components enriched by the RDF data model
 In the following sections, the main elements of the architecture are described:
 
 \subsection{LD-R Web Components}
@@ -383,13 +383,13 @@ In order to allow the bootstrapping of LDA UIs, LD-Reactor provides a comprehens
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/viewedit.png}
-  \caption{A screenshot of LD-R view and edit mode for individual (top) and aggregate (bottom) values.}
+  \caption{A screenshot of LD-Reactor view and edit mode for individual (top) and aggregate (bottom) values.}
   \label{fig:ldrViewEdit}
 \end{figure}
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/facets.jpg}
-  \caption{A screenshot of LD-R browse mode.}
+  \caption{A screenshot of LD-Reactor browse mode.}
   \label{fig:ldrBrowse}
 \end{figure}
 
@@ -403,7 +403,7 @@ Additionally, in order to facilitate the creation of component metadata, we deve
 
 \begin{figure*}[ht] 
   \includegraphics[width=1\linewidth]{images/screenshots.jpg}
-  \caption{A screenshot of RISIS metadata editor and datasets portal powered by the LD-R framework.}
+  \caption{A screenshot of RISIS metadata editor and datasets portal powered by the LD-Reactor framework.}
   \label{fig:risisScreenshot}
 \end{figure*}
 
@@ -418,8 +418,8 @@ The LD-Reactor frameowrk was utilized in RISIS to help data providers with no Li
 %In order to expose a user-friendly interface to researchers, a set of configurations and components were devised. 
 In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
 
-\paragraph{Configurations}
-\begin{compactitem}
+\paragraph{Configurations:}
+\begin{itemize}
  \item The UI should be able to to render metadata properties in different categories (\autoref{code:config} line 3,4).
  \item The labels for properties should be changeable in the UI especially for technical properties (e.g. RDF dump) that are unknown to researchers outside the Semantic Web domain (\autoref{code:config} line 18,26,40).
  \item There should be a hint for properties to help metadata editors to understand the meaning of the property (\autoref{code:config} line 20,28, 41).
@@ -427,24 +427,18 @@ In the following, we present the main requirements for configurations and compon
  \item Whenever a DBpedia URI is provided, display the corresponding Wikipedia URI in the UI enabling users to retrieve human readable information (\autoref{code:config} line 33,45).
  \item When a dropdown menu is provided, there should be the ability to accommodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
  
-\end{compactitem}
+\end{itemize}
 
-\paragraph{Components}
-\begin{compactitem}
+\paragraph{Components:}
+\begin{itemize}
  \item A component for \texttt{dcterms:spatial} values to allow searching and inserting resources from DBpedia based on the entity type (e.g. Place, Person, Organization, etc).
  \item A component for \texttt{dcterms:subject} values to allow inserting and viewing DBpedia URIs as subject.
  \item A component for \texttt{dcterms:language} values to allow inserting and viewing languages formatted in ISO 639-1 using standard URIs (e.g. \\ \url{http://id.loc.gov/vocabulary/iso639-1/en}).
  \item A component for \texttt{dcat:byteSize} values to allow inserting and viewing file size specified by a unit.
   \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
-\end{compactitem}
+\end{itemize}
 
-
-The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
-For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
-In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
-This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
-\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
-
+%\newpage
 \begin{lstlisting}[language=json,firstnumber=1, label=code:config, caption=An excerpt of the LD-R configuration for RISIS.]
 resource: {
     `generic': {
@@ -507,6 +501,12 @@ property: {
 }
 \end{lstlisting}
 
+The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
+For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
+In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
+This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
+\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
+
 \subsection{Open PHACTS}
 
 The Open PHACTS Discovery Platform has been developed to reduce barriers to drug discovery, by collecting and integrating a large number of prominent RDF datasets in the pharmacology domain. The platform provides a uniform RESTful API for application developers to access the integrated data.
@@ -516,7 +516,7 @@ The provision of VoID dataset descriptors that adhere to the specification prove
 
 A new version of the VoID editor implemented using the LD-Reactor framework is now available online\footnote{\url{http://void.ops.labs.vu.nl/} Source: \url{http://github.com/openphacts/ld-r}}. Though the  import/export capabilities of the editor are still not implemented at the time of writing, we have received very positive feedback from the community for a number of reasons:
 
-\begin{figure}[htb] 
+\begin{figure}[tb] 
   \includegraphics[width=1\linewidth]{images/ops_ldr}
   \caption{A screenshot of the BasicCalendarInput LD-R component created to allow the editing of datetimes in Open PHACTS VoID descriptions.}
   \label{fig:opsLdr}
@@ -544,19 +544,19 @@ There are also more flexible application frameworks such as OntoWiki~\cite{ontow
 
 Besides these generic LDA frameworks, there are also approaches that focus on the development of user interfaces for LDAs.
 WYSIWYM (What You See Is What You Mean)~\cite{WYSIWYM2014} is a generic semantics-based UI model to allow integrated visualization, exploration and authoring of structured and unstructured data.
-Our proposed LD-R approach utilizes the WYSIWYM model for binding RDF-based data to viewer, editor and browser UIs.
+Our proposed approach utilizes the WYSIWYM model for binding RDF-based data to viewer, editor and browser UIs.
 Uduvudu~\cite{Uduvudu2015} is another approach to make an adaptive RDF-based UI engine to render Linked Data.
 Instead of adopting Web components, Uduvudu employs a set of flexible UI templates that can be combined to create complex UIs. 
-Even though the static templates do not provide enough interactions for editing and browsing data (in contrast to Web components), we believe that algorithms for automatic selection of templates employed in Uduvudu can be reused in the LD-R framework for automatic generation of configurations.
+Even though the static templates do not provide enough interactions for editing and browsing data (in contrast to Web components), we believe that algorithms for automatic selection of templates employed in Uduvudu can be reused in the LD-Reactor framework for automatic generation of configurations.
 Another similar approach is SemwidgJS~\cite{StegemannZ14} which brings a semantic Widget library for the rapid development of LDA UIs.
 SemwidgJS offers a simplified query language to allow the navigation of graph-based data by ordinary Web developers.
-The main difference between LD-R and SemwidgJS is that LD-R suggests a more interactive model which is not only for displaying Linked Data but also for providing user adaptations based on the meaning of data.
+The main difference between LD-R and SemwidgJS is that LD-Reactor suggests a more interactive model which is not only for displaying Linked Data but also for providing user adaptations based on the meaning of data.
 LD-Viewer~\cite{Lukovnikov2014} is another related Linked Data presentation framework particularly tailored for the presentation of DBpedia resources.
-In contrast to LD-R, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowledge of RDF which is a burden for developers unfamiliar with Semantic Web technologies.
+In contrast to LD-Reactor, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowledge of RDF which is a burden for developers unfamiliar with Semantic Web technologies.
 
-In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked Data visualization and exploration such as Balloon Synopsis~\cite{BalloonSchlegelWSGK14} and Sgvizler~\cite{Sgvizler} which can  be utilized as Web components within the LD-R framework. 
+In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked Data visualization and exploration such as Balloon Synopsis~\cite{BalloonSchlegelWSGK14} and Sgvizler~\cite{Sgvizler} which can  be utilized as Web components within the LD-Reactor framework. 
 
-Overall, what distinguishes LD-R from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and reusable UIs as its first class citizen.
+Overall, what distinguishes LD-Reactor from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and reusable UIs as its first class citizen.
 
 \section{Conclusion}
 This paper presented adaptive Linked Data-driven Web components as a solution to increase the usability of current Linked Data applications.
@@ -568,7 +568,7 @@ As our future plan, we envisage to create a cloud infrastructure to share and re
 We also plan to make a user interface to facilitate creation of the LD-R scopes and configurations.
 Another direction for future research is developing mechanisms for the automatic composition of Web components based on the semantic markup provided.
 
-\newpage
+%\newpage
 
 \section{Aknowledgement}
 We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-R framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
