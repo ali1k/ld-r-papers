@@ -118,7 +118,7 @@ In addition to modularity provided by the LD-R components, the proposed RDF-base
 %``The measure of intelligence is the ability to change.''  Albert Einstein
 %\end{center}
 
-With the growing number of structured data published on the Web, WWW is moving towards becoming a rich ecosystem of machine-understandable Linked Data (LD)~\footnote{\url{lodlaundromat.org} recently (25.09.2015) reported approx. 38.6 billion triples published on the Web.}.
+With the growing number of structured data published on the Web, WWW is moving towards becoming a rich ecosystem of machine-understandable Linked Data (LD)\footnote{\url{lodlaundromat.org} recently (10.10.2015) reported approx. 38.6 billion triples published on the Web.}.
 Semantically structured data facilitate a number of important aspects of
 information management such as information retrieval, search, visualization,  customization, personalization and integration~\cite{SCAJ-Khalili-2013}.
 Despite all these benefits, Linked Data Applications (LDAs) are not yet adopted by the large community of Web developers outside the Semantic Web domain and, causally, by the end users on the Web.
@@ -175,10 +175,10 @@ Finally, we discuss the implementation of our idea and its usage in real-world s
 
 \section{The Current Status of Linked Data User Interface Development}
 In order to understand the current pitfalls of LDA UI design, we conducted a survey targeting %\textbf{75}
-active Semantic Web developers~\footnote{results are available at \url{https://goo.gl/cltqhv}}.
+active Semantic Web developers\footnote{results are available at \url{https://goo.gl/cltqhv}}.
 The participants where selected from the community of Semantic Web developers on Github who have had at least one active Semantic Web-related repository.
 Github is currently the most popular repository for open source code and its transparent environment implies a suitable basis for evaluating reuse and collaboration among developers~\cite{Lima14,Tsay2014}.
-We used Github APIs~\footnote{\url{https://developer.github.com/v3/}} to search~\footnote{keywords: "Semantic Web" OR "Linked Data" OR "RDF" OR "SPARQL"} for the potential Semantic Web repositories and then to collect the contact information of the corresponding contributors when available.
+We used Github APIs\footnote{\url{https://developer.github.com/v3/}} to search\footnote{keywords: "Semantic Web" OR "Linked Data" OR "RDF" OR "SPARQL"} for the potential Semantic Web repositories and then to collect the contact information of the corresponding contributors when available.
 The search, after removing the organizations and invalid email addresses, resulted in 650 potential Semantic Web developers.
 We then contacted the potential candidates to ask them about the current pitfalls in developing LDA UIs.
 In our enquiry, we clearly mentioned to skip the questionnaire if they have not developed any Semantic Web application so far.
@@ -287,7 +287,7 @@ For example, an application developer can restrict access to a specific property
 \label{sec:markup}
 The innate support of RDF in LD-R Web components enable the automatic creation of semantic markup in the UI level.
 Lower semantic techniques such as RDFa, Mircodata and JSON-LD can be incorporated in the core LD-R components to expose structured data to current search engines which are capable of parsing semantic markup.
-For example, an LD-R component created based on the Good Relations~\footnote{\url{http://www.heppnetz.de/projects/goodrelations/}} or \url{Schema.org} ontologies, can automatically expose the product data as Google Rich Snippets for products~\footnote{\url{https://developers.google.com/structured-data/}} which will provide better visibility of the data on Web search results (i.e. SEO).
+For example, an LD-R component created based on the Good Relations\footnote{\url{http://www.heppnetz.de/projects/goodrelations/}} or \url{Schema.org} ontologies, can automatically expose the product data as Google Rich Snippets for products\footnote{\url{https://developers.google.com/structured-data/}} which will provide better visibility of the data on Web search results (i.e. SEO).
 
 In addition to automatic annotation of data provided by the LD-R Web components, the approach offers semi-automatic markup of Web components by creating component metadata. 
 Component metadata consists of two categories of markup:
@@ -347,7 +347,7 @@ As such, they may request the development of new components or configurations in
 
 In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-Reactor)} which is available online at \url{http://ld-r.org}.
 LD-Reactor utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
-The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
+The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach\footnote{Elaborating on all these factors is beyond the scope of this paper.}.
 
 As shown in \autoref{fig:dataflow}, LD-Reactor follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, and updates all affected components. 
@@ -356,7 +356,7 @@ The component interaction with SPARQL endpoints to retrieve and update Linked Da
 In order to allow the bootstrapping of LDA UIs, LD-Reactor provides a comprehensive framework that combines the following main elements:
 \begin{itemize}
 
-\item A set of RESTful Web services that allow basic CRUD operations on Linked Data using SPARQL queries~\footnote{the framework is compliant with the SPARQL 1.1 standard. However, we have identified certain inconsistencies between OpenRDF Sesame and OpenLink Virtuoso RDF stores, which did not allow the execution of syntactically identical queries across both systems. Thereby, specific adaptors have been implemented for each of these two RDF stores.}.
+\item A set of RESTful Web services that allow basic CRUD operations on Linked Data using SPARQL queries\footnote{the framework is compliant with the SPARQL 1.1 standard. However, we have identified certain inconsistencies between OpenRDF Sesame and OpenLink Virtuoso RDF stores, which did not allow the execution of syntactically identical queries across both systems. Thereby, specific adaptors have been implemented for each of these two RDF stores.}.
 
 \item A set of core components called \emph{Reactors} which implement core Linked Data components (see \autoref{fig:architecture}) together with their corresponding actions and stores.
 
@@ -399,7 +399,7 @@ As shown in \autoref{fig:ldrViewEdit}, components can target individual values o
 \autoref{fig:ldrBrowse} depicts the browse mode where individual (e.g. item lists with check boxes) and aggregate data browser (e.g. data sliders or maps) components can be employed.
 
 Semantic markup of data (as discussed in Section \ref{sec:markup}) is supported natively within the framework by embedding Microdata annotations within the LD-R Web components.
-Additionally, in order to facilitate the creation of component metadata, we developed a tool \footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in JSON-LD, using \url{Schema.org}'s SoftwareApplication schema~\footnote{\url{https://schema.org/SoftwareApplication}}.
+Additionally, in order to facilitate the creation of component metadata, we developed a tool\footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in JSON-LD, using \url{Schema.org}'s SoftwareApplication schema\footnote{\url{https://schema.org/SoftwareApplication}}.
 
 \begin{figure*}[ht] 
   \includegraphics[width=1\linewidth]{images/screenshots.jpg}
@@ -409,14 +409,14 @@ Additionally, in order to facilitate the creation of component metadata, we deve
 
 \section{Use Cases}
 
-The LD-Reactor framework is already in use within the RISIS~\footnote{\url{http://risis.eu}} and Open PHACTS~\footnote{\url{http://www.openphacts.org}} projects.
+The LD-Reactor framework is already in use within the RISIS\footnote{\url{http://risis.eu}} and Open PHACTS\footnote{\url{http://www.openphacts.org}} projects.
 
 \subsection{RISIS}
 
 The RISIS project aims to provide an infrastructure for research and innovation, targeting researchers from various science and technology domains.
-The LD-Reactor frameowrk was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets~\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search the generated metadata to identify and request access to the data they are interested in~\footnote{\url{http://datasets.risis.eu}}.
+The LD-Reactor frameowrk was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search the generated metadata to identify and request access to the data they are interested in\footnote{\url{http://datasets.risis.eu}}.
 %In order to expose a user-friendly interface to researchers, a set of configurations and components were devised. 
-In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file~\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
+In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
 
 \paragraph{Configurations}
 \begin{compactitem}
@@ -440,7 +440,7 @@ In the following, we present the main requirements for configurations and compon
 
 
 The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
-For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
+For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
 In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
 This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
 \autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
@@ -510,11 +510,11 @@ property: {
 \subsection{Open PHACTS}
 
 The Open PHACTS Discovery Platform has been developed to reduce barriers to drug discovery, by collecting and integrating a large number of prominent RDF datasets in the pharmacology domain. The platform provides a uniform RESTful API for application developers to access the integrated data.
-In collaboration with the data providers, the Open PHACTS consortium has created a comprehensive dataset description specification~\footnote{\url{http://www.openphacts.org/specs/2013/WD-datadesc-20130912/}} based on the Vocabulary of Interlinked Datasets (VoID)~\footnote{\url{http://www.w3.org/TR/void/}}. The metadata provided in this context enables (among others) exposing the detailed provenance for each result produced by the platform, the location of source files for each dataset, and example resources.
+In collaboration with the data providers, the Open PHACTS consortium has created a comprehensive dataset description specification\footnote{\url{http://www.openphacts.org/specs/2013/WD-datadesc-20130912/}} based on the Vocabulary of Interlinked Datasets (VoID)\footnote{\url{http://www.w3.org/TR/void/}}. The metadata provided in this context enables (among others) exposing the detailed provenance for each result produced by the platform, the location of source files for each dataset, and example resources.
 
 The provision of VoID dataset descriptors that adhere to the specification proved to be a non-trivial challenge, even for data providers that are well versed in providing RDF distributions of their core data. A series of UIs were therefore created to facilitate the creation of the VoID descriptors. However, as the specification evolved over the first 2 years of the project, any changes or additions made had to be reflected in the UI source code as well; a cumbersome process. Due to the inevitable delay between specification changes and UI development, users often found themselves having to edit large RDF files using text editors, which resulted in frequent syntax errors being made.
 
-A new version of the VoID editor implemented using the LD-Reactor framework is now available online~\footnote{\url{http://void.ops.labs.vu.nl/} Source: \url{http://github.com/openphacts/ld-r}}. Though the  import/export capabilities of the editor are still not implemented at the time of writing, we have received very positive feedback from the community for a number of reasons:
+A new version of the VoID editor implemented using the LD-Reactor framework is now available online\footnote{\url{http://void.ops.labs.vu.nl/} Source: \url{http://github.com/openphacts/ld-r}}. Though the  import/export capabilities of the editor are still not implemented at the time of writing, we have received very positive feedback from the community for a number of reasons:
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/ops_ldr}
@@ -528,7 +528,7 @@ A new version of the VoID editor implemented using the LD-Reactor framework is n
 	\item Access control: Using the built--in user authentication mechanism of LD-Reactor we were able to ensure that only the owner(s) of a particular dataset are able to edit its metadata.
 	\item Non-standard properties: Some data providers elect to include additional property that are not prescribed by the specification. The visualisation of such properties is supported easily using the core LD-R components.
 	\item Intuitive navigation: Typically, each dataset consists of a number of subsets, which are also of type \texttt{void:Dataset}, and may have further subsets themselves. Displaying all the information together can easily become confusing for the user; instead the LD-Reactor framework was used to provide navigation through the subset links, displaying only a single dataset (or subset) at a time.
-	\item Datetime component: Manually typing datetimes in the required format (e.g. `2015-02-12T16:48:00Z') can be an error prone process. Instead, we have been able to reuse the \texttt{react-bootstrap-datetimepicker}~\footnote{\url{https://github.com/quri/react-bootstrap-datetimepicker}}, to create a new LD-R value editor for datetimes (BasicCalendarInput) with a graphical interface as shown in \autoref{fig:opsLdr}.
+	\item Datetime component: Manually typing datetimes in the required format (e.g. `2015-02-12T16:48:00Z') can be an error prone process. Instead, we have been able to reuse the \texttt{react-bootstrap-datetimepicker}\footnote{\url{https://github.com/quri/react-bootstrap-datetimepicker}}, to create a new LD-R value editor for datetimes (BasicCalendarInput) with a graphical interface as shown in \autoref{fig:opsLdr}.
 \end{itemize}
 
 In addition to the significant improvements over previous versions of the VoID editor outlined above, we were able to develop the LD-Reactor version in a fraction of the time that was required for earlier versions.
@@ -539,7 +539,7 @@ Within the Semantic Web community, the main focus has been on enriching current 
 There have also been a few attempts to create Semantic Web Components by integrating existing Web-based components with Semantic Web technology~\cite{pahl2011}.
 When it comes to component-based development of LDAs, the works typically fall into 
 software application frameworks that address building scalable LDAs in a modular way.
-In most of the current full-stack LDA frameworks such as Callimachus~\footnote{\url{http://callimachusproject.org/}} and LDIF~\footnote{\url{http://ldif.wbsg.de/}} the focus is mainly on the backend side of LDAs and less attention is paid on how Linked Data is consumed by the end-user. 
+In most of the current full-stack LDA frameworks such as Callimachus\footnote{\url{http://callimachusproject.org/}} and LDIF\footnote{\url{http://ldif.wbsg.de/}} the focus is mainly on the backend side of LDAs and less attention is paid on how Linked Data is consumed by the end-user. 
 There are also more flexible application frameworks such as OntoWiki~\cite{ontowiki-swj} which provide UI widgets and extensions to expose Linked Data to non-Semantic Web end-users.
 
 Besides these generic LDA frameworks, there are also approaches that focus on the development of user interfaces for LDAs.
