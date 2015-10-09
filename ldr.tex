@@ -337,15 +337,15 @@ As such, they may request the development of new components or configurations in
 
 \section{Implementation}
 
-In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-R)} which is available online at \url{http://ld-r.org}.
-LD-R utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
+In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-Reactor)} which is available online at \url{http://ld-r.org}.
+LD-Reactor utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach~\footnote{Elaborating on all these factors is beyond the scope of this paper.}
 
-As shown in \autoref{fig:dataflow}, LD-R follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
+As shown in \autoref{fig:dataflow}, LD-Reactor follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow. 
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, and updates all affected components. 
 The component interaction with SPARQL endpoints to retrieve and update Linked Data occurs through the invocation of RESTful services in actions.
 
-In order to allow the bootstrapping of LDA UIs, LD-R provides a comprehensive framework that combines the following main elements:
+In order to allow the bootstrapping of LDA UIs, LD-Reactor provides a comprehensive framework that combines the following main elements:
 \begin{itemize}
 
 \item A set of RESTful Web services that allow basic CRUD operations on Linked Data using SPARQL queries~\footnote{the framework is compliant with the SPARQL 1.1 standard. However, we have identified certain inconsistencies between OpenRDF Sesame and OpenLink Virtuoso RDF stores, which did not allow the execution of syntactically identical queries across both systems. Thereby, specific adaptors have been implemented for each of these two RDF stores.}.
@@ -401,14 +401,14 @@ Additionally, in order to facilitate the creation of component metadata, we deve
 
 \section{Use Cases}
 
-The LD-R framework is already in use within the RISIS~\footnote{\url{http://risis.eu}} and OpenPhacts~\footnote{\url{http://www.openphacts.org}} projects.
+The LD-Reactor framework is already in use within the RISIS~\footnote{\url{http://risis.eu}} and Open PHACTS~\footnote{\url{http://www.openphacts.org}} projects.
 
 \subsection{RISIS}
 
 The RISIS project aims to provide an infrastructure for research and innovation, targeting researchers from various science and technology domains.
-The LD-R approach was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets~\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search the generated metadata to identify and request access to the data they are interested in~\footnote{\url{http://datasets.risis.eu}}.
+The LD-Reactor frameowrk was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets~\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search the generated metadata to identify and request access to the data they are interested in~\footnote{\url{http://datasets.risis.eu}}.
 %In order to expose a user-friendly interface to researchers, a set of configurations and components were devised. 
-In the following, we present the main requirements for configurations and components, together with their representation in the LD-R configuration file~\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
+In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file~\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
 
 \paragraph{Configurations}
 \begin{compactitem}
@@ -492,8 +492,10 @@ property: {
 }
 \end{lstlisting}
 
-The required components were built on the microservice architecture where we could reuse existing ReactJS components extended by complementary Linked Data services.
-For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with a DBpedia query service to retrieve the coordinates for the DBpedia resource values.
+The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
+For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps~\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
+In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
+This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
 \autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
 
 \subsection{Open PHACTS}
@@ -503,24 +505,24 @@ In collaboration with the data providers, the Open PHACTS consortium has created
 
 The provision of VoID dataset descriptors that adhere to the specification proved to be a non-trivial challenge, even for data providers that are well versed in providing RDF distributions of their core data. A series of UIs were therefore created to facilitate the creation of the VoID descriptors. However, as the specification evolved over the first 2 years of the project, any changes or additions made had to be reflected in the UI source code as well; a cumbersome process. Due to the inevitable delay between specification changes and UI development, users often found themselves having to edit large RDF files using text editors, which resulted in frequent syntax errors being made.
 
-A new version of the VoID editor implemented using the LD-R framework is now available online~\footnote{\url{http://void.ops.labs.vu.nl/} Source: \url{http://github.com/openphacts/ld-r}}. Though the  import/export capabilities of the editor are still not implemented at the time of writing, we have received very positive feedback from the community for a number of reasons:
+A new version of the VoID editor implemented using the LD-Reactor framework is now available online~\footnote{\url{http://void.ops.labs.vu.nl/} Source: \url{http://github.com/openphacts/ld-r}}. Though the  import/export capabilities of the editor are still not implemented at the time of writing, we have received very positive feedback from the community for a number of reasons:
 
 \begin{figure}[htb] 
   \includegraphics[width=1\linewidth]{images/ops_ldr}
-  \caption{A screenshot of the BasicCalendarInput LDR component created to allow the editing of datetimes in Open PHACTS VoID descriptions.}
+  \caption{A screenshot of the BasicCalendarInput LD-R component created to allow the editing of datetimes in Open PHACTS VoID descriptions.}
   \label{fig:opsLdr}
 \end{figure}
 
 \begin{itemize}
 	\item UI updates: As the UI is generated based on the underlying data, the process of staying up to date with the current specification becomes trivial. The RDF example provided by the specification can be simply loaded into the RDF store and the changes are immediately visible in the UI through the default core components. Users are then able to adapt the example VoID description to their dataset. The resulting VoID file can be downloaded by exporting all triples in the named graph corresponding to the dataset.
 	\item Dataset releases: A large number of property values remain the same across releases. Similarly with using the example from the Dataset Description Specification, users are able to upload their old VoID description and only edit the outdated values.
-	\item Access control: Using the built--in user authentication mechanism of LD-R we were able to ensure that only the owner(s) of a particular dataset are able to edit its metadata.
+	\item Access control: Using the built--in user authentication mechanism of LD-Reactor we were able to ensure that only the owner(s) of a particular dataset are able to edit its metadata.
 	\item Non-standard properties: Some data providers elect to include additional property that are not prescribed by the specification. The visualisation of such properties is supported easily using the core LD-R components.
-	\item Intuitive navigation: Typically, each dataset consists of a number of subsets, which are also of type \texttt{void:Dataset}, and may have further subsets themselves. Displaying all the information together can easily become confusing for the user; instead the LD-R framework was used to provde navigation through the subset links, displaying only a single dataset (or subset) at a time.
-	\item Datetime component: Manually typing datetimes in the required format (e.g. `2015-02-12T16:48:00Z') can be an error prone process. Instead, we have been able to reuse the \texttt{react-bootstrap-datetimepicker}~\footnote{\url{https://github.com/quri/react-bootstrap-datetimepicker}}, to create a new LD-R object editor for datetimes (BasicCalendarInput) with a graphical interface as shown in \autoref{fig:opsLdr}.
+	\item Intuitive navigation: Typically, each dataset consists of a number of subsets, which are also of type \texttt{void:Dataset}, and may have further subsets themselves. Displaying all the information together can easily become confusing for the user; instead the LD-Reactor framework was used to provide navigation through the subset links, displaying only a single dataset (or subset) at a time.
+	\item Datetime component: Manually typing datetimes in the required format (e.g. `2015-02-12T16:48:00Z') can be an error prone process. Instead, we have been able to reuse the \texttt{react-bootstrap-datetimepicker}~\footnote{\url{https://github.com/quri/react-bootstrap-datetimepicker}}, to create a new LD-R value editor for datetimes (BasicCalendarInput) with a graphical interface as shown in \autoref{fig:opsLdr}.
 \end{itemize}
 
-In addition to the significant improvements over previous versions of the VoID editor outlined above, we were able to develop the LD-R version in a fraction of the time that was required for earlier versions.
+In addition to the significant improvements over previous versions of the VoID editor outlined above, we were able to develop the LD-Reactor version in a fraction of the time that was required for earlier versions.
 
 \section{Related Work}
 Component-based software engineering (CBSE) has been an active research area since 1987 with numerous results published in the research literature~\cite{Vale2015}.
