@@ -271,7 +271,7 @@ These components apply on individual and aggregate values (e.g. to show multiple
 \begin{figure}[tb]
  \center
   \includegraphics[width=.70\linewidth]{images/exampleConfig.pdf}
-  \caption{An example of LD-R configuration graph.}
+  \caption{A sample LD-R configuration hypergraph.}
   \label{fig:exampleConfig}
 \end{figure}
 
@@ -283,8 +283,13 @@ Each scope conveys a certain level of specificity on a given context ranging fro
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
 A configuration is defined as a setting which affects the way Web components are rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
 UI adaptation is handled by traversing the configurations for scopes and overwriting them when a more specific applicable scope is found.
-For example, we can define a generic configuration for all properties on the property level, and then for some specific properties (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
-Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
+
+\autoref{fig:exampleConfig} demonstrates an example of the LD-R configuration hypergraph containing scopes with the maximum depth of \texttt{DRP}.
+The graph defines a generic configuration for all properties as \texttt{C1=\{\{cd:1\},\{cr:2\}\},\{cp:3\}\}}.
+There are configurations defined per dataset ~\texttt{D1=<http://ld-r.org>} as ~\texttt{C2=\{\{cd:2\},\{x:1\}\}}, per resource ~\texttt{R2} of type ~\texttt{foaf:Person} as ~\texttt{C3=\{\{cr:0\},\{y:3\}\}} and per property ~\texttt{P2=rdfs:label} as ~\texttt{C4=\{\{cp:1\},\{z:2\}\}\}}.
+
+%and then for some specific properties \texttt{P} (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
+%Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
 Scopes can also be defined on a per user basis, facilitating the versioning and reuse of user-specific configurations.
 User-Specific configurations provide different views on components and thereby data, based on the different personas dealing with them.
