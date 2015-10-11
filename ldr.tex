@@ -270,10 +270,11 @@ These components apply on individual and aggregate values (e.g. to show multiple
 
 LD-R Web components provide a versatile approach for context adaptation.
 A context can be a specific domain of interest, a specific user requirement or both.
-In order to enable customization and personalization, the LD-R approach exploits the concept of \emph{Scope}.
+In order to enable customization and personalization, the LD-R approach exploits the concepts of \emph{Scope} and \emph{Configurations}.
 A scope is defined as a hierarchical permutation of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specific).
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
+A configuration is defined as a setting which affects the way Web components are rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
 UI adaptation is handled by traversing the configurations for scopes and overwriting them when a more specific applicable scope is found.
 For example, we can define a generic configuration for all properties on the property level, and then for some specific properties (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
 Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
