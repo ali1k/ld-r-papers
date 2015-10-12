@@ -161,7 +161,7 @@ Engaging more UX designers and Web developers into LDA UIs will also result in m
 \section{Contributions and Outline}
 The contributions of this work are the concept of \emph{Adaptive LD-R Web components} and an open source implementation of it available at \url{http://ld-r.org}.
 Our primary claim is that adopting a component-based approach that encapsulates the main concerns of a Semantic Web application, paves the way to reusing existing best practices from the UX community within the LDAs hence building more usable and pervasive LDAs.
-We also make an argument that combining the LD-R components with LD-R scopes and configurations allow application assemblers to provide a high level of flexibility in their LDA UIs.
+We also present that combining the LD-R components with LD-R scopes and configurations allow application assemblers to provide a high level of flexibility in their LDA UIs.
 
 We explore this claim in stages.
 First, we collect some data about the current status of Semantic Web UI development.
@@ -234,7 +234,7 @@ As shown in \autoref{fig:framework}, the proposed architecture addresses LDA UI 
 In the following sections, the main elements of the architecture are described:
 
 \subsection{LD-R Web Components}
-As depicted in \autoref{fig:architecture}, there are 4 core component levels in an LD-R Web application.
+As depicted in \autoref{fig:architecture}, there are four core component levels in an LD-R Web application.
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
 %For example, a viewer in the level of \emph{Dataset} component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of \emph{Resource} component can only allow visualizing properties of a specific resource (or a specific type of resource).
 
@@ -259,7 +259,9 @@ Each property is instantiated by an individual value or multiple values in case 
 The value(s) of properties are controlled by the \emph{Value} component.
 In turn, Value components invoke different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
-These components apply on individual and aggregate values (e.g. to show multiple coordinates on a map).
+These components apply on individual and aggregate values in different levels.
+User interactions with the LD-R components are controlled by a set of configurations defined on one or more selected component levels known as scopes.
+ %(e.g. to show multiple coordinates on a map).
 
 \subsection{Scopes and Configurations}
 
@@ -406,7 +408,7 @@ As such, they may request the development of new components or configurations in
 \end{figure}
 
 \section{Implementation}
-
+\label{sec:implementation}
 In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-Reactor)} which is available online at \url{http://ld-r.org}.
 LD-Reactor utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
 The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. Polymer\footnote{\url{http://www.polymer-project.org/}}, AngularJS\footnote{\url{https://angularjs.org/}}, EmberJS\footnote{\url{http://emberjs.com/}}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach\footnote{Elaborating on all these factors is beyond the scope of this paper.}.
@@ -500,6 +502,9 @@ In the following, we present the main requirements for configurations and compon
   \item A component for \texttt{dcterms:format} values to allow inserting and viewing mime types.
 \end{itemize}
 
+In accordance to the LD-Reactor microservices architecture (cf. Section \ref{sec:implementation}), we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.\\
+\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
+
 %\newpage
 \begin{lstlisting}[language=json,firstnumber=1, label=code:config, caption=An excerpt of the LD-Reactor configuration for the RISIS metadata editor.]
 resource: {
@@ -562,9 +567,6 @@ property: {
     }   
 }
 \end{lstlisting}
-
-In accordance to the LD-Reactor microservices architecture (cf. ), we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
-\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
 
 \subsection{Open PHACTS}
 
