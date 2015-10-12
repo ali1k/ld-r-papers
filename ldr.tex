@@ -270,7 +270,7 @@ These components apply on individual and aggregate values (e.g. to show multiple
 
 \begin{figure}[tb]
  \center
-  \includegraphics[width=.70\linewidth]{images/exampleConfig.pdf}
+  \includegraphics[width=.73\linewidth]{images/exampleConfig.pdf}
   \caption{A sample LD-R configuration hypergraph.}
   \label{fig:exampleConfig}
 \end{figure}
@@ -282,12 +282,41 @@ A scope is defined as a hierarchical permutation of Dataset, Resource, Property 
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specific).
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
 A configuration is defined as a setting which affects the way Web components are rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
-UI adaptation is handled by traversing the configurations for scopes and overwriting them when a more specific applicable scope is found.
+UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting them when a more specific applicable scope is found.
 
 \autoref{fig:exampleConfig} demonstrates an example of the LD-R configuration hypergraph containing scopes with the maximum depth of \texttt{DRP}.
-The graph defines a generic configuration for all properties as \texttt{C1=\{\{cd:1\},\{cr:2\}\},\{cp:3\}\}}.
-There are configurations defined per dataset ~\texttt{D1=<http://ld-r.org>} as ~\texttt{C2=\{\{cd:2\},\{x:1\}\}}, per resource ~\texttt{R2} of type ~\texttt{foaf:Person} as ~\texttt{C3=\{\{cr:0\},\{y:3\}\}} and per property ~\texttt{P2=rdfs:label} as ~\texttt{C4=\{\{cp:1\},\{z:2\}\}\}}.
+The graph defines a generic configuration for the application as C$_{\text{1}}$.
+There are configurations defined for dataset scope D$_{\text{1}}$ as C$_{\text{2}}$, for resource scope R$_{\text{2}}$ as C$_{\text{3}}$ and for property scope P$_{\text{2}}$ as C$_{\text{4}}$.
+There are also configurations for \texttt{RP} scope R$_{\text{2}}$P$_{\text{2}}$ as C$_{\text{5}}$ and for \texttt{DRP} scope D$_{\text{1}}$R$_{\text{2}}$P$_{\text{2}}$ as C$_{\text{6}}$.
+Let's suppose we have a setting with the following values for the scopes and configurations:
+\begin{compactitem}
 
+\item
+D$_{\text{1}}$= \texttt{<http://ld-r.org/users>}
+\item
+R$_{\text{2}}$= type \texttt{foaf:Person}
+\item
+P$_{\text{2}}$= \texttt{rdfs:label}
+\item
+C$_{\text{1}}$=\{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\}\}
+\item
+C$_{\text{2}}$=\{\{attr$_{\text{1}}$:0\},\{attr$_{\text{3}}$:2\}\}
+\item
+C$_{\text{3}}$=\{\{attr$_{\text{3}}$:1\},\{attr$_{\text{4}}$:4\},\{attr$_{\text{5}}$:1\}\}
+\item
+C$_{\text{4}}$=\{\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\}
+\item
+C$_{\text{5}}$=\{\{viewer:`contact'\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{7}}$:6\}\}
+\item
+C$_{\text{6}}$=\{\{attr$_{\text{3}}$:8\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\}
+\end{compactitem}
+
+With the above settings, when a property component for \texttt{rdfs:label} is rendered without the dataset and resource context, the configuration will be:\\
+ \{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\} \\
+When the property component gets rendered within the resource context of type \texttt{foaf:Person}, the settings for viewer, attr$_{\text{3}}$ and attr$_{\text{5}}$ are overwritten and new settings for attr$_{\text{3}}$, attr$_{\text{4}}$ and attr$_{\text{7}}$ are added:\\
+\{\{viewer:`contact'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:6\}\} \\
+When the additional context of dataset as ~\texttt{<http://ld-r.org/users>} is given, attr$_{\text{3}}$ and attr$_{\text{7}}$ get overwritten and a new setting for attr$_{\text{8}}$ is added:\\
+\{\{viewer:`contact'\},\{attr$_{\text{1}}$:0\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:8\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:1,\{attr$_{\text{8}}$:3\}\}\} \\
 %and then for some specific properties \texttt{P} (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
 %Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
@@ -295,7 +324,7 @@ Scopes can also be defined on a per user basis, facilitating the versioning and 
 User-Specific configurations provide different views on components and thereby data, based on the different personas dealing with them.
 
 In addition to the fine-grained component customization, LD-R Web applications provide a fine-grained access control over the data through the component scopes.
-For example, an application developer can restrict access to a specific property of a specific resource in a certain dataset.
+For example, an application developer can restrict access to a specific property of a specific resource in a certain dataset and on a specific interaction mode.
 
 \subsection{Semantic Markup for Web Components}
 \label{sec:markup}
