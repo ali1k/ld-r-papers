@@ -281,8 +281,8 @@ In order to enable customization and personalization, the LD-R approach exploits
 A scope is defined as a hierarchical permutation of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specific).
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
-A configuration is defined as a setting which affects the way Web components are rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
-UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting them when a more specific applicable scope is found.
+A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
+UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found.
 
 \autoref{fig:exampleConfig} demonstrates an example of the LD-R configuration hypergraph containing scopes with the maximum depth of \texttt{DRP}.
 The graph defines a generic configuration for the application as C$_{\text{1}}$.
