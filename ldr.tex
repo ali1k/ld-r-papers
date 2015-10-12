@@ -285,7 +285,6 @@ A configuration is defined as a setting which affects the way the LDA and Web co
 UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found:
 
 \begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Pseudo code for UI adaptation.]
-
 InitialConfig = {initial application configuration}
 Context = [array of scopes with the corresponding configuration objects]
 Config = InitialConfig
@@ -295,7 +294,6 @@ for (i = 15; i < 1; i--) {
         Config.overwriteExistingAttributes()
     }
 }
-
 \end{lstlisting}
 
 \autoref{fig:exampleConfig} demonstrates an example of the LD-R configuration hypergraph containing scopes with the maximum depth of \texttt{DRP}.
