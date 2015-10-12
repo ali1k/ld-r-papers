@@ -284,7 +284,7 @@ Scopes are defined by using either the URIs of named graphs, resources and prope
 A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
 UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found:
 
-\begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Pseudo code for UI adaptation algorithm.]
+\begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Algorithm for the LD-R UI adaptation.]
 InitialConfig = {initial application configuration}
 Context = [array of scopes with the corresponding configuration objects]
 Config = InitialConfig
