@@ -103,13 +103,13 @@ In addition to modularity provided by the LD-R components, the proposed RDF-base
 
 
 % % A category with the (minimum) three required fields
+\category{H.5.2}{Information Interfaces and Presentation}{User Interfaces}%\category{D.2.13}{Software Engineering}{Software Architectures}
+\category{D.2.11}{Software Engineering}{Reusable Software} {: reusable libraries} {, reuse models}
 
-\category{D.2.13}{Software Engineering}{Reusable Software}
-
-\terms{Design, Human Factors, Standardization}
+\terms{Design, Human Factors, Performance, Standardization}
 
 %\keywords{
-%Linked Data, refinement operators, data cleansing, RDF transformation
+%Linked Data, We Components, Adaptive User Interfaces
 %} % NOT required for Proceedings
 
 \section{Introduction}
@@ -161,6 +161,7 @@ Engaging more UX designers and Web developers into LDA UIs will also result in m
 \section{Contributions and Outline}
 The contributions of this work are the concept of \emph{Adaptive LD-R Web components} and an open source implementation of it available at \url{http://ld-r.org}.
 Our primary claim is that adopting a component-based approach that encapsulates the main concerns of a Semantic Web application, paves the way to reusing existing best practices from the UX community within the LDAs hence building more usable and pervasive LDAs.
+We also make an argument that Linked Data based configurations provides a way to adapt
 
 We explore this claim in stages.
 First, we collect some data about the current status of Semantic Web UI development.
@@ -168,7 +169,7 @@ Next, we demonstrate how adaptive LD-R Web components can address the current is
 Finally, we discuss the implementation of our idea and its usage in real-world scenarios.
 
 \begin{figure*}[tb]
-  \includegraphics[width=1\linewidth]{images/userstudy.png}
+  \includegraphics[width=1\linewidth]{images/userstudy.pdf}
   \caption{Results of our user study on the current status of LDA UI development.}
   \label{fig:userstudy}
 \end{figure*}
@@ -223,7 +224,7 @@ As our study shows, within the current LDA developers, 52\% had experience adapt
 \emph{Adoption issues with non-Semantic Web developers.}
 In order to examine if there is a communication gap between UI designers and Semantic Web developers, we asked the participants about their experience when collaborating with a non-SW developer.
 Among the participants, 51\% had communication issues with non-Semantic Web developers to familiarize them with Semantic Web concepts before they can start contributing to the application.
-The distribution of this issue among more experienced developers (45\% of the intermediate and advanced users) further emphasizes the importance of this communication gap.\\~\\
+The distribution of this issue among more experienced developers (45\% of the intermediate and advanced users) further emphasizes the importance of this communication gap.
 
 \end{itemize}
 
@@ -235,7 +236,7 @@ In the following sections, the main elements of the architecture are described:
 \subsection{LD-R Web Components}
 As depicted in \autoref{fig:architecture}, there are 4 core component levels in an LD-R Web application.
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
-For example, a viewer in the level of \emph{Dataset} component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of \emph{Resource} component can only allow visualizing properties of a specific resource (or a specific type of resource).
+%For example, a viewer in the level of \emph{Dataset} component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of \emph{Resource} component can only allow visualizing properties of a specific resource (or a specific type of resource).
 
 \begin{figure}[htb]
 	\center
