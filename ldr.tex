@@ -284,7 +284,7 @@ Scopes are defined by using either the URIs of named graphs, resources and prope
 A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
 UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found:
 
-\begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Pseudo code for UI adaptation.]
+\begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Pseudo code for UI adaptation algorithm.]
 InitialConfig = {initial application configuration}
 Context = [array of scopes with the corresponding configuration objects]
 Config = InitialConfig
@@ -323,12 +323,17 @@ C$_{\text{5}}$=\{\{viewer:`contact'\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{7}}
 C$_{\text{6}}$=\{\{attr$_{\text{3}}$:8\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\}
 \end{compactitem}
 
-With the above settings, when a property component for \texttt{rdfs:label} is rendered without the dataset and resource context, the configuration will be:\\
- \{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\} \\
-When the property component gets rendered within the resource context of type \texttt{foaf:Person}, the settings for viewer and attr$_{\text{5}}$ are overwritten and new settings for attr$_{\text{3}}$, attr$_{\text{4}}$ and attr$_{\text{7}}$ are added:\\
-\{\{viewer:`contact'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:6\}\} \\
-When the additional context of dataset as ~\texttt{<http://ld-r.org/users>} is given, attr$_{\text{3}}$ and attr$_{\text{7}}$ get overwritten and a new setting for attr$_{\text{8}}$ is added:\\
-\{\{viewer:`contact'\},\{attr$_{\text{1}}$:0\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:8\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\} \\
+With the above settings, when a property component for \texttt{rdfs:label} is rendered without the dataset and resource context, the configuration will be:
+
+ \{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\} 
+ 
+When the property component gets rendered within the resource context of type \texttt{foaf:Person}, the settings for viewer and attr$_{\text{5}}$ are overwritten and new settings for attr$_{\text{3}}$, attr$_{\text{4}}$ and attr$_{\text{7}}$ are added:
+
+\{\{viewer:`contact'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:6\}\} 
+
+When the additional context of dataset as ~\texttt{<http://ld-r.org/users>} is given, attr$_{\text{3}}$ and attr$_{\text{7}}$ get overwritten and a new setting for attr$_{\text{8}}$ is added:
+
+\{\{viewer:`contact'\},\{attr$_{\text{1}}$:0\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:8\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\} 
 %and then for some specific properties \texttt{P} (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
 %Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
