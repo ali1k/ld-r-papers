@@ -436,10 +436,10 @@ In order to allow the bootstrapping of LDA UIs, LD-Reactor provides a comprehens
 %  \label{fig:microservices}
 %\end{figure}
 %
-%In contrast to the centralized monolithic architecture, LD-R implementation is compliant with \emph{Microservices Architecture}~\cite{microservices}.
-%As shown in \autoref{fig:microservices}, in the microservices architecture, the main functionalities of an LDA are put into separate decoupled components which can be implemented by different developers.
-% and they scale by distributing these services across servers, replicating as needed.
-%This architectural style minimizes the redeploying of the entire application when changes in components occur and facilitates testability of the components.
+
+LD-Reactor implementation is compliant with \emph{Microservices Architecture}~\cite{microservices} where the existing ReactJS components can be extended by complementary Linked Data services.
+In contrast to the centralized monolithic architecture, the microservices architecture, allows to put the main functionalities of the LDA into separate decoupled services and scale by distributing these services across servers, replicating as needed.
+This architectural style also helps to minimize the redeploying of the entire application when changes in components were requested.
 
 %\cite{SmartComposition2015}
 
@@ -563,10 +563,7 @@ property: {
 }
 \end{lstlisting}
 
-The required components were built on the \emph{Microservices Architecture}~\cite{microservices} where we could reuse existing ReactJS components extended by complementary Linked Data services.
-For example, we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
-In contrast to the centralized monolithic architecture, the microservices architecture, allowed to put the main functionalities of the application into separate decoupled services and scale by distributing these services across servers, replicating as needed.
-This architectural style also helped to minimize the redeploying of the entire application when changes in components were requested.
+In accordance to the LD-Reactor microservices architecture (cf. ), we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps\footnote{\url{http://github.com/tomchentw/react-google-maps}} together with DBpedia lookup and query services to retrieve the coordinates for the recongnized DBpedia resource values.
 \autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
 
 \subsection{Open PHACTS}
