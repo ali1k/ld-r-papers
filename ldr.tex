@@ -4,6 +4,7 @@
 \usepackage{listings}
 \usepackage{paralist}
 \usepackage{xcolor}
+\usepackage[]{algorithm2e}
 \colorlet{punct}{red!60!black}
 \definecolor{background}{HTML}{EEEEEE}
 \definecolor{delim}{RGB}{20,105,176}
@@ -140,7 +141,7 @@ Furthermore, LD-R components exploit the power and flexibility of RDF data model
 %The RDF (Resource Description Framework) as the basic building block of the Semantic Web provides a general framework to describe resources on the Web.
 
 The LD-R approach offers many benefits that we will describe in the remainder of the paper. Among them are:
-
+\vspace{-1em}
 \paragraph{Bootstrapping LDA UIs} 
 LD-R components exploit best practices from modern Web application development to bring an exhaustive architecture to perform separation of concerns and thereby bootstrapping an LDA by only selecting a minimal relevant configuration.
 For example, a developer only needs to set the URL of his in-use SPARQL endpoint and start developing the viewer components without dealing with the underlying connection adapters and data flow mediators in the system.
@@ -187,7 +188,7 @@ We used a minimal set of 7 questions to attract more responses and also used inl
 We collected 75 responses to our questionnaire, which is a considerable number of participants (almost 11.5\% of the potential candidates).
 %The number of participants who filled in our questionnaire at the end was 75 (almost 11.5\% of the potential candidates which is still a considerable number of participants).
 \autoref{fig:userstudy} shows the main results of our survey.
-
+\vspace{-1em}
 \paragraph{Participants}
 Based on their LDA development experience, we divided the participants into three groups: basic (less than 2 applications), intermediate (3-5 applications) and advanced (more than 5 applications) developers.
 The result showed that the majority (60\%) of participants were intermediate and advanced developers.
@@ -216,7 +217,7 @@ Interestingly, the majority of participants (49\%) were already reusing other co
 
 \item
 \emph{Adaptation of LDA UIs.}
-Most of the modern Web applications provide a mechanism to customize and personalize their user interfaces based on the type of data and the information needs of their end users.
+Most of the modern Web applications provide a mechanism to customize and personalize their user interfaces based on the type of data and the information needs of their end-users.
 Proactive user interface adaptation allows the application to act more like a human and consequently, more intelligently~\cite{adaptiveSW2011}. 
 As our study shows, within the current LDA developers, 52\% had experience adapting the user interface of their applications frequently. There were also 32\% that were doing the UI adaptation but not frequently.
 
@@ -259,9 +260,9 @@ Each property is instantiated by an individual value or multiple values in case 
 The value(s) of properties are controlled by the \emph{Value} component.
 In turn, Value components invoke different components to view, edit and browse the property values.
 \emph{Viewer}, \emph{Editor} and \emph{Browser} components are terminals in the LD-R single directional data flow where customized user-generated components can be plugged into the system.
-These components apply on individual and aggregate values in different levels.
-User interactions with the LD-R components are controlled by a set of configurations defined on one or more selected component levels known as scopes.
+%These components apply on individual and aggregate values in different levels.
  %(e.g. to show multiple coordinates on a map).
+User interactions with the LD-R components are controlled by a set of configurations defined on one or more selected component levels known as scopes.
 
 \subsection{Scopes and Configurations}
 
@@ -284,10 +285,11 @@ In order to enable customization and personalization, the LD-R approach exploits
 A scope is defined as a hierarchical permutation of Dataset, Resource, Property and Value components (cf. \autoref{fig:scopes}).
 Each scope conveys a certain level of specificity on a given context ranging from 1 (most specific) to 15 (least specific).
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
-A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. enforce a component to display Wikipedia page URIs for DBpedia resources).
-UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found:
+A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. render a specific component for a specific RDF property or enforce a component to display Wikipedia page URIs for DBpedia resources).
+UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting the configurations when a more specific applicable scope is found.
+As shown below, in the worst case, when the \texttt{DRPV} scopes are given and the UI is supposed to render the Value components, all the 15 scopes need to be traversed for the adaptation: 
 
-\begin{lstlisting}[firstnumber=1, backgroundcolor=\color{white}, basicstyle=\small\tt, label=code:adaptation, caption=Algorithm for the LD-R UI adaptation.]
+\begin{lstlisting}[firstnumber=1, frame=tb, backgroundcolor=\color{white}, basicstyle=\small\ttfamily, label=code:adaptation, caption=Algorithm for the LD-R UI adaptation.]
 InitialConfig = {initial application configuration}
 Context = [array of scopes with the corresponding configuration objects]
 Config = InitialConfig
@@ -394,8 +396,8 @@ Within the LD-R component system, the metadata provided by each Web component fa
 Having shared vocabularies on Linked Open Data allows assemblers to not only reuse components but also reuse the existing configurations and scopes published on the Web.
 For example, if there is already a suitable configuration for \texttt{RP} scope which uses \texttt{foaf:Person} as resource type and ~\texttt{dcterms:description} as property URI, the assembler can reuse that configuration within his application.
 
-\item \emph{End User}. 
-End users experience working with the components to pursue goals in a certain application domain.
+\item \emph{End-User}. 
+End-users experience working with the components to pursue goals in a certain application domain.
 As such, they may request the development of new components or configurations in order to fulfil their requirements and are expected to provide feedback on existing components.
 
 \end{itemize}
@@ -471,6 +473,7 @@ Additionally, in order to facilitate the creation of component metadata, we deve
   \label{fig:risisScreenshot}
 \end{figure*}
 
+%\newpage
 \section{Use Cases}
 
 The LD-Reactor framework is already in use within the RISIS\footnote{\url{http://risis.eu}} and Open PHACTS\footnote{\url{http://www.openphacts.org}} projects.
@@ -481,7 +484,7 @@ The RISIS project aims to provide an infrastructure for research and innovation,
 The LD-Reactor frameowrk was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search the generated metadata to identify and request access to the data they are interested in\footnote{\url{http://datasets.risis.eu}}.
 %In order to expose a user-friendly interface to researchers, a set of configurations and components were devised. 
 In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}:
-
+%\vspace{-1em}
 \paragraph{Configurations:}
 \begin{itemize}
  \item The UI should be able to to render metadata properties in different categories (\autoref{code:config} line 3, 4).
@@ -492,7 +495,7 @@ In the following, we present the main requirements for configurations and compon
  \item When a dropdown menu is provided, there should be the ability to accommodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
  
 \end{itemize}
-
+%\vspace{-1em}
 \paragraph{Components:}
 \begin{itemize}
  \item A component for \texttt{dcterms:spatial} values to allow searching and inserting resources from DBpedia based on the entity type (e.g. Place, Person, Organization, etc).
@@ -619,7 +622,7 @@ LD-Viewer~\cite{Lukovnikov2014} is another related Linked Data presentation fram
 In contrast to LD-Reactor, LD-Viewer  builds on top of traditional MVC architecture and its extensions rely heavily on the knowledge of RDF which is a burden for developers unfamiliar with Semantic Web technologies.
 
 In addition to the LDA UI frameworks, there are several ad-hoc tools for Linked Data visualization and exploration such as Balloon Synopsis~\cite{BalloonSchlegelWSGK14} and Sgvizler~\cite{Sgvizler} which can  be utilized as Web components within the LD-Reactor framework. 
-\cite{Abascal2015} provides an extensive list of these tools aiming to make Linked Data accessible for common end users who are not familiar with Semantic Web.
+\cite{Abascal2015} provides an extensive list of these tools aiming to make Linked Data accessible for common end-users who are not familiar with Semantic Web.
 
 Overall, what distinguishes LD-Reactor from the existing frameworks and tools is its modern isomorphic component-based architecture that addresses reactive and reusable UIs as its first class citizen.
 
