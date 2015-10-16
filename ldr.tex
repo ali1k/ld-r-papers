@@ -95,7 +95,7 @@ Frank van Harmelen\\
 % need to update the abstract
 %The amount of published Linked Data on the Web is increasing day by day.
 %As a result, the applications driven by Semantic Web and Linked Data are taking momentum on the Web.
-Due to the increasing amount of Linked Data openly published on the Web, user-facing Linked Data Applications (LDAs) driven by Semantic Web technologies are gaining momentum.
+Due to the increasing amount of Linked Data openly published on the Web, user-facing Linked Data Applications (LDAs) are gaining momentum.
 One of the major entrance barriers for Web developers to contribute to this wave of LDAs is the required knowledge of Semantic Web technologies such as the RDF data model and SPARQL query language.
 This paper presents an adaptive component-based approach together with its open source implementation for creating flexible and reusable Semantic Web interfaces driven by Linked Data.
 Linked Data-driven (LD-R) Web components abstract the complexity of the underlying Semantic Web technologies in order to allow reuse of existing Web components in LDAs, enabling Web developers who are not experts in Semantic Web to develop interfaces that view, edit and browse Linked Data.
@@ -120,7 +120,7 @@ In addition to the modularity provided by the LD-R components, the proposed RDF-
 %``The measure of intelligence is the ability to change.''  Albert Einstein
 %\end{center}
 
-With the growing number of structured data published, the Web is moving towards becoming a rich ecosystem of machine-understandable Linked Data\footnote{\url{lodlaundromat.org} recently (14.10.2015) reported approx. 38.6 billion triples published on the Web.}.
+With the growing number of structured data published, the Web is moving towards becoming a rich ecosystem of machine-understandable Linked Data\footnote{\url{lodlaundromat.org} recently (15.10.2015) reported approx. 38.6 billion triples published on the Web.}.
 Semantically structured data facilitates a number of important aspects of
 information management such as information retrieval, search, visualization, customization, personalization and integration~\cite{SCAJ-Khalili-2013}.
 Despite all these benefits, Linked Data Applications (LDAs) are not yet adopted by the large community of Web developers outside the Semantic Web domain and, causally, by the end-users on the Web.
@@ -134,7 +134,7 @@ In this situation, more time is spent in re-designing existing UIs rather than f
 This paper presents adaptive Linked Data-driven Web components as an approach to build flexible and reusable Semantic Web UIs.
 \emph{Web Components} are a set of W3C standards~\cite{webcomponentsW3C} that enable the creation of custom, reusable user interface widgets or components in Web documents and Web applications.
 The \emph{Resource Description Framework} (RDF), on the other hand, provides a common data model that allows data-driven components to be created, shared and integrated in a structured way across different applications.
-Linked Data-driven (LD-R) Web components as defined in this paper are a species of Web component that employ the RDF data model for representing their content and specification (i.e. metadata about the component).
+Linked Data-driven (LD-R) Web components as defined in this paper are a species of Web components that employ the RDF data model for representing their content and specification (i.e. metadata about the component).
 LD-R components are supported by a set of predefined core Web components, each representing a compartment of the RDF data model on the Web UI.
 Thus, the Semantic Web nature of an LDA can be encapsulated in LD-R components thereby allowing UX designers and Web developers outside the Semantic Web community to contribute to LDAs.
 The components also provide current Semantic Web developers with a mechanism to reuse existing Web components in their LDAs.
@@ -484,14 +484,14 @@ The RISIS project aims to provide an infrastructure for research and innovation,
 The LD-Reactor framework was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search, identify, and request access to the data they are interested in\footnote{\url{http://datasets.risis.eu}}.
 %In order to expose a user-friendly interface to researchers, a set of configurations and components were devised.
 In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}.
-%\vspace{-1em}
+\vspace{-1em}
 \paragraph{Configurations:}
 \begin{itemize}
  \item The UI should be able to to render metadata properties in different categories (\autoref{code:config} line 3, 4).
  \item The labels for properties should be changeable in the UI especially for technical properties (e.g. RDF dump) that are unknown to researchers outside the Semantic Web domain (\autoref{code:config} line 18, 26, 40).
  \item There should be a hint for properties to help metadata editors to understand the meaning of the property (\autoref{code:config} line 20, 28, 41).
  \item Instead of showing the full URIs, the output UI should render either a shortened URI or a meaningful string linked to the original URI (\autoref{code:config} line 6).
- \item Whenever a DBpedia URI is provided, display the corresponding Wikipedia URI in the UI enabling users to retrieve human readable information (\autoref{code:config} line 33, 45).
+ \item Whenever a DBpedia URI is provided, display the corresponding Wikipedia URI enabling users to retrieve human readable information (\autoref{code:config} line 33, 45).
  \item When a dropdown menu is provided, there should be the ability to accommodate user-defined values which are not listed in the menu (\autoref{code:config} line 57).
 
 \end{itemize}
@@ -586,7 +586,7 @@ A new version of the VoID editor implemented using the LD-Reactor framework is n
   \label{fig:opsLdr}
 \end{figure}
 
-\begin{itemize}
+\begin{compactitem}
 	\item UI updates: As the UI is generated based on the underlying data, the process of staying up to date with the current specification becomes trivial. The RDF example provided by the specification can be simply loaded into the RDF store and the changes are immediately visible in the UI through the default core components. Users are then able to adapt the example VoID description to their dataset. The resulting VoID file can be downloaded by exporting all triples in the named graph corresponding to the dataset.
 	\item Dataset releases: A large number of property values remain the same across releases. Similarly with using the example from the Dataset Description Specification, users are able to upload their old VoID description and only edit the outdated values.
 	\item Access control: Using the built--in user authentication mechanism of LD-Reactor we were able to ensure that only the owner(s) of a particular dataset are able to edit its metadata.
@@ -595,7 +595,7 @@ A new version of the VoID editor implemented using the LD-Reactor framework is n
 	\item Datetime component: Manually typing datetimes in the required format (e.g. `2015-02-12T16:48:00Z') can be an error prone process. Instead, we have been able to reuse the \texttt{react-bootstrap-datetimepicker}\footnote{\url{https://github.com/quri/react-bootstrap-datetimepicker}} component, to create a new LD-R value editor for datetimes (BasicCalendarInput
 \footnote{\url{https://github.com/openphacts/ld-r/blob/master/components/object/editor/individual/BasicCalendarInput.js}}
 ) with a graphical interface as shown in \autoref{fig:opsLdr}.
-\end{itemize}
+\end{compactitem}
 
 In addition to the significant improvements over previous versions of the VoID editor outlined above, we were able to develop the LD-Reactor version in a fraction of the time that was required for earlier versions.
 
@@ -634,7 +634,7 @@ The proposed component-based solution emphasizes the reusability and separation 
 The RDF-based UI adaptation mechanism aims to provide better customization and personalization based on the meaning of data.
 Furthermore, employing standard Web components aspires to bring a better communication between UX designers and Semantic Web developers in order to reuse best UI practices within Linked Data applications.
 
-We argue that bridging the gap between Semantic Web Technologies and Web Components worlds mutual benefits for both sides.
+We argue that bridging the gap between Semantic Web Technologies and Web Components worlds brings mutual benefits for both sides.
 On one hand, Semantic Web technologies provide support for richer component discovery, interoperability, integration, and adaptation on the Web.
 On the other, Web Components bring the advantages of UI standardization, reusability, replaceability and encapsulation to current Semantic Web applications.
 
@@ -643,7 +643,7 @@ We also plan to make a user interface to facilitate creation of the LD-R scopes 
 Another direction for future research is developing mechanisms for the automatic configuration and composition of Web components based on the semantic markup provided.
 
 \section{Aknowledgement}
-We would like to thank our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-Reactor framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
+We would like to thank professor Peter van den Besselaar from the faculty of Social Sciences and our colleagues from the KRR research group at VU University Amsterdam for their helpful comments during the development of the LD-Reactor framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
 
 \clearpage
 
