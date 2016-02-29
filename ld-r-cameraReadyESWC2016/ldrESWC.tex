@@ -32,92 +32,7 @@
 \lstset{basicstyle=\footnotesize\ttfamily,frame=single}
 
 \usepackage[hidelinks]{hyperref}
-\usepackage{algorithm2e}
-% needed for correct representation of umlauts in listings
-\lstset{literate=%
-    {Ö}{{\"O}}1
-    {Ä}{{\"A}}1
-    {Ü}{{\"U}}1
-    {ß}{{\ss}}1
-    {ü}{{\"u}}1
-    {ä}{{\"a}}1
-    {ö}{{\"o}}1
-    {~}{{\textasciitilde}}1
-}
 
-% listing styles
-\renewcommand{\ttdefault}{pcr}
-\lstset{%
-    numberbychapter=false,
-    numbers=left,
-    numberstyle=\tiny,
-    basicstyle=\ttfamily\scriptsize,
-    tabsize=2,
-    framexleftmargin=2pt,
-    captionpos=b,
-    frame=single,
-    breaklines=true,
-    numberblanklines=true,
-    keywordstyle=\ttfamily\bfseries\scriptsize,
-    emphstyle=\textit
-}
-\lstdefinestyle{sparql}{%
-    morekeywords={SELECT,OPTIONAL,FROM,DISTINCT,a,WHERE,FILTER,GROUP,ORDER,LIMIT,BY,IN,AS},
-    emph={r,pub,aairObject,verb,person,bday,s,p,o}
-}
-\lstdefinestyle{turtle}{%
-    morekeywords={a, @prefix},
-    morecomment=[s][\textrm]{<}{>},
-    morecomment=[s][\textit]{"}{"},
-}
-
-% JSON listings
-\newcommand{\linenumberstyle}{\scriptsize}
-\lstdefinelanguage{json} {
-  sensitive=false,
-  morestring=[b]"',
-  showstringspaces=false
-}
-\lstset{
-  numberbychapter=false,
-  language=json,
-  basicstyle=\scriptsize\ttfamily,
-  captionpos=b,
-  % keywordstyle=\color[rgb]{0,0,0.7},
-  % stringstyle = \color[rgb]{0,0.5,0},
-  % identifierstyle=\color{orange},
-  commentstyle=\color[gray]{0.5},
-  backgroundcolor=\color[gray]{0.96},
-  framexleftmargin=1pt,
-  xleftmargin=4.4pt,
-  xrightmargin=3.4pt,
-  numbers=left,
-  breaklines=true,
-  numberstyle=\linenumberstyle,
-  frame=single,
-  aboveskip=1.3em,
-  inputencoding=utf8,
-  extendedchars=true,
-   literate=
-     *{0}{{{\color{numb}0}}}{1}
-      {1}{{{\color{numb}1}}}{1}
-      {2}{{{\color{numb}2}}}{1}
-      {3}{{{\color{numb}3}}}{1}
-      {4}{{{\color{numb}4}}}{1}
-      {5}{{{\color{numb}5}}}{1}
-      {6}{{{\color{numb}6}}}{1}
-      {7}{{{\color{numb}7}}}{1}
-      {8}{{{\color{numb}8}}}{1}
-      {9}{{{\color{numb}9}}}{1}
-      {:}{{{\color{punct}{:}}}}{1}
-      {,}{{{\color{punct}{,}}}}{1}
-      {\{}{{{\color{delim}{\{}}}}{1}
-      {\}}{{{\color{delim}{\}}}}}{1}
-      {[}{{{\color{delim}{[}}}}{1}
-      {]}{{{\color{delim}{]}}}}{1},
-}
-
-\renewcommand{\lstlistingname}{Code}
 
 \newcommand{\furl}[1]{\footnote{\scriptsize \url{#1}}} 
 \def\sectionautorefname{Section}
@@ -136,23 +51,16 @@ Dept. of Computer Science, Vrije Universiteit Amsterdam, The Netherlands\\
 \maketitle
 
 \begin{abstract}
-% need to update the abstract
-%The amount of published Linked Data on the Web is increasing day by day.
-%As a result, the applications driven by Semantic Web and Linked Data are taking momentum on the Web.
 Due to the increasing amount of Linked Data openly published on the Web, user-facing Linked Data Applications (LDAs) are gaining momentum.
-One of the major entrance barriers for Web developers to contribute to this wave of LDAs is the required knowledge of Semantic Web technologies such as the RDF data model and SPARQL query language.
-This paper presents an adaptive component-based approach together with its open source implementation for creating flexible and reusable Semantic Web interfaces driven by Linked Data.
-Linked Data-driven (LD-R) Web components abstract the complexity of the underlying Semantic Web technologies in order to allow reuse of existing Web components in LDAs, enabling Web developers who are not experts in Semantic Web to develop interfaces that view, edit and browse Linked Data.
+One of the major entrance barriers for Web developers to contribute to this wave of LDAs is the required knowledge of Semantic Web (SW) technologies such as the RDF data model and SPARQL query language.
+This paper presents an adaptive component-based approach together with its open source implementation for creating flexible and reusable SW interfaces driven by Linked Data.
+Linked Data-driven (LD-R) Web components abstract the complexity of the underlying SW technologies in order to allow reuse of existing Web components in LDAs, enabling Web developers who are not experts in SW to develop interfaces that view, edit and browse Linked Data.
 In addition to the modularity provided by the LD-R components, the proposed RDF-based configuration method allows application assemblers to reshape their user interface for different use cases, by either reusing existing shared configurations or by creating their proprietary configurations.
 
 \end{abstract}
-%\textbf{\textit{Keywords}}: Vocabulary engineering, Supply Chain.
 
 \section{Introduction}
 
-%\begin{center}
-%``The measure of intelligence is the ability to change.''  Albert Einstein
-%\end{center}
 
 With the growing number of structured data published, the Web is moving towards becoming a rich ecosystem of machine-understandable Linked Data\footnote{\url{lodlaundromat.org} recently (17.12.2015) reported approx. 38.6 billion triples published on the Web.}.
 Semantically structured data facilitates a number of important aspects of
@@ -272,14 +180,6 @@ In the following sections, the main elements of the architecture are described:
 \subsection{LD-R Web Components}
 As depicted in \autoref{fig:architecture}, there are four core component levels in an LD-R Web application.
 Each core component abstracts the actions required for retrieving and updating the graph-based data and provides a basis for user-defined components to interact with Linked Data in three modes: view, edit and browse.
-%For example, a viewer in the level of \emph{Dataset} component can enable visualizing a set of resources based on a certain property value whereas a viewer in the level of \emph{Resource} component can only allow visualizing properties of a specific resource (or a specific type of resource).
-
-%\begin{figure}[htb]
-%	\center
-%  \includegraphics[width=0.80\linewidth]{images/framework.pdf}
-%  \caption{Main elements of the adaptive LD-R Web components architecture.}
-%  \label{fig:framework}
-%\end{figure}
 
 \begin{figure}[tb]
 \center
@@ -324,60 +224,8 @@ Each scope conveys a certain level of specificity on a given context ranging fro
 Scopes are defined by using either the URIs of named graphs, resources and properties, or by identifying the resource types and data types.
 A configuration is defined as a setting which affects the way the LDA and Web components are interpreted and rendered (e.g. render a specific component for a specific RDF property or enforce a component to display Wikipedia page URIs for DBpedia resources).
 UI adaptation is handled by traversing the configurations for scopes, populating the configurations and overwriting them when a more specific applicable scope is found.
-%As shown in \autoref{code:adaptation} below, in the worst case when the \texttt{DRPV} scopes are used and the UI is supposed to render the Value components, all 15 scopes need to be traversed for the adaptation:
 
-%\begin{lstlisting}[firstnumber=1, frame=tb, backgroundcolor=\color{white}, basicstyle=\small\ttfamily, label=code:adaptation, caption=Algorithm for the LD-R UI adaptation.]
-%InitialConfig = {initial application configuration}
-%Context = [array of scopes with the corresponding configuration objects]
-%Config = InitialConfig
-%for (i = 15; i < 1; i--) {
-%    Config.compareWith(Context[i]) {
-%        Config.addMissingAttributes()
-%        Config.overwriteExistingAttributes()
-%    }
-%}
-%\end{lstlisting}
 
-%\autoref{fig:exampleConfig} demonstrates an example of the LD-R configuration hypergraph containing scopes with the maximum depth of \texttt{DRP}.
-%The graph defines a generic configuration for the application as C$_{\text{1}}$.
-%There are configurations defined for the dataset scope D$_{\text{1}}$ as C$_{\text{2}}$, for the resource scope R$_{\text{2}}$ as C$_{\text{3}}$ and for the property scope P$_{\text{2}}$ as C$_{\text{4}}$.
-%There are also configurations for the \texttt{RP} scope R$_{\text{2}}$P$_{\text{2}}$ as C$_{\text{5}}$ and for the \texttt{DRP} scope D$_{\text{1}}$R$_{\text{2}}$P$_{\text{2}}$ as C$_{\text{6}}$.
-%Let's suppose we have a setting with the following values for the scopes and configurations:
-%\begin{compactitem}
-%
-%\item
-%D$_{\text{1}}$= \texttt{<http://ld-r.org/users>}
-%\item
-%R$_{\text{2}}$= type \texttt{foaf:Person}
-%\item
-%P$_{\text{2}}$= \texttt{rdfs:label}
-%\item
-%C$_{\text{1}}$=\{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\}\}
-%\item
-%C$_{\text{2}}$=\{\{attr$_{\text{1}}$:0\},\{attr$_{\text{3}}$:2\}\}
-%\item
-%C$_{\text{3}}$=\{\{attr$_{\text{3}}$:1\},\{attr$_{\text{4}}$:4\},\{attr$_{\text{5}}$:1\}\}
-%\item
-%C$_{\text{4}}$=\{\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\}
-%\item
-%C$_{\text{5}}$=\{\{viewer:`contact'\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{7}}$:6\}\}
-%\item
-%C$_{\text{6}}$=\{\{attr$_{\text{3}}$:8\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\}
-%\end{compactitem}
-
-%With the above settings, when a property component for \texttt{rdfs:label} is rendered without the dataset and resource context, the configuration will be:
-
-% \{\{viewer:`basic'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{5}}$:2\},\{attr$_{\text{6}}$:1\}\}
-%
-%When the property component gets rendered within the resource context of type \texttt{foaf:Person}, the settings for viewer and attr$_{\text{5}}$ are overwritten and new settings for attr$_{\text{3}}$, attr$_{\text{4}}$ and attr$_{\text{7}}$ are added:
-%
-%\{\{viewer:`contact'\},\{attr$_{\text{1}}$:1\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:5\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:6\}\}
-%
-%When the additional context of dataset as ~\texttt{<http://ld-r.org/users>} is given, attr$_{\text{3}}$ and attr$_{\text{7}}$ get overwritten and a new setting for attr$_{\text{8}}$ is added:
-%
-%\{\{viewer:`contact'\},\{attr$_{\text{1}}$:0\},\{attr$_{\text{2}}$:3\},\{attr$_{\text{3}}$:8\},\{attr$_{\text{4}}$:4\},\\\{attr$_{\text{5}}$:1\},\{attr$_{\text{6}}$:1\},\{attr$_{\text{7}}$:1\},\{attr$_{\text{8}}$:3\}\}
-%%and then for some specific properties \texttt{P} (e.g. \texttt{dcterms:title} or \texttt{rdfs:label}) within a specific resource (e.g. \texttt{<http://ld-r.org>}), we can change those configurations using the \texttt{RP} scope.
-%%Another example would be having a different rendering for all resources of a specific type (e.g. \texttt{foaf:Person}).
 
 Scopes can also be defined on a per user basis, facilitating the versioning and reuse of user-specific configurations.
 User-Specific configurations provide different views on components and thereby data, based on the different personas dealing with them.
@@ -438,18 +286,19 @@ As such, they may request the development of new components or configurations in
 
 \end{itemize}
 
+\vspace{-1.5em}
+\section{Implementation}
+\label{sec:implementation}
+In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-Reactor)} which is available online at \url{http://ld-r.org}.
+LD-Reactor utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
+The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. \emph{Polymer}, \emph{AngularJS}, \emph{EmberJS}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach.
+
 \begin{figure}[tb]
 \center
   \includegraphics[width=.65\linewidth]{images/dataflow.pdf}
   \caption{Data flow in the LD-Reactor framework.}
   \label{fig:dataflow}
 \end{figure}
-
-\section{Implementation}
-\label{sec:implementation}
-In order to realize the idea of adaptive Linked Data-driven Web components, we implemented an open-source software framework called \emph{Linked Data Reactor (LD-Reactor)} which is available online at \url{http://ld-r.org}.
-LD-Reactor utilizes Facebook's ReactJS\footnote{\url{https://facebook.github.io/react/}} components, the Flux\footnote{\url{https://facebook.github.io/flux}} architecture, Yahoo!'s Fluxible\footnote{\url{http://fluxible.io/}} framework for isomorphic Web applications (i.e. running the components code both on the server and the client) and the Semantic-UI\footnote{\url{http://semantic-ui.com/}} framework for flexible UI themes.
-The main reasons we chose \emph{React} components over other  Web Components solutions (e.g. \emph{Polymer}, \emph{AngularJS}, \emph{EmberJS}, etc.) were the maturity and maintainability of the technology, the native multi-platform support, the number of developer tools/components/applications, and the efficiency of its underlying virtual DOM approach.
 
 As shown in \autoref{fig:dataflow}, LD-Reactor follows the Flux architecture which eschews MVC (Model-View-Controller) in favour of a unidirectional data flow.
 When a user interacts with a React component, the component propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, and updates all affected components.
@@ -470,46 +319,16 @@ In order to allow the bootstrapping of LDA UIs, LD-Reactor provides a comprehens
 
 \end{itemize}
 
-%\begin{figure}[htb]
-%  \includegraphics[width=.8\linewidth]{images/microservices.jpg}
-%  \caption{Monoliths vs. Microservices~\cite{microservices}}
-%  \label{fig:microservices}
-%\end{figure}
-%
 
 LD-Reactor implementation is compliant with \emph{Microservices Architecture}~\cite{microservices} where the existing ReactJS components can be extended by complementary LD services.
 In contrast to the centralized monolithic architecture, the microservices architecture allows placing the main functionalities of the LDA into separate decoupled services and scale by distributing these services across servers, replicating as needed.
 This architectural style also helps to minimize the redeploying of the entire application when changes in components were requested.
 
-%\cite{SmartComposition2015}
-
-%\begin{figure}[htb]
-%  \includegraphics[width=1\linewidth]{images/viewedit.png}
-%  \caption{A screenshot of LD-Reactor view and edit mode for individual (top) and aggregate (bottom) values.}
-%  \label{fig:ldrViewEdit}
-%\end{figure}
-
-%\begin{figure}[htb]
-%  \includegraphics[width=1\linewidth]{images/facets.jpg}
-%  \caption{A screenshot of LD-Reactor browse mode.}
-%  \label{fig:ldrBrowse}
-%\end{figure}
-
-%There are three modes of interactions within LD-R components namely \emph{view}, \emph{browse} and \emph{edit}.
-%These modes work with two types of value granularity: individual and aggregate.
-%As shown in \autoref{fig:ldrViewEdit}, components can target individual values or interact with aggregate values when users want to show/update multiple values at once.
-%\autoref{fig:ldrBrowse} depicts the browse mode where individual (e.g. item lists with check boxes) and aggregate data browser (e.g. data sliders or maps) components can be employed.
-
 Semantic markup of data (as discussed in Section \ref{sec:markup}) is supported natively within the framework by embedding Microdata annotations within the LD-R Web components.
-Additionally, in order to facilitate the creation of component metadata, we developed a tool\footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in JSON-LD, using \url{Schema.org}'s SoftwareApplication schema\footnote{\url{https://schema.org/SoftwareApplication}}.
+Additionally, in order to facilitate the creation of component metadata, we developed a tool\footnote{\url{https://github.com/ali1k/ld-r-metadata-generator}} which automatically generates the general metadata about the components in JSON-LD, using \url{Schema.org}'s SoftwareApplication schema.
 
-%\begin{figure*}[ht]
-%  \includegraphics[width=1\linewidth]{images/screenshots.jpg}
-%  \caption{A screenshot of RISIS metadata editor and datasets portal powered by the LD-Reactor framework.}
-%  \label{fig:risisScreenshot}
-%\end{figure*}
 
-%\newpage
+
 \section{Use Cases}
 
 The LD-Reactor framework is already in use within the RISIS\footnote{\url{http://risis.eu}} and Open PHACTS\footnote{\url{http://www.openphacts.org}} projects.
@@ -518,9 +337,9 @@ The LD-Reactor framework is already in use within the RISIS\footnote{\url{http:/
 
 The RISIS project aims to provide an infrastructure for research and innovation, targeting researchers from various science and technology domains.
 The LD-Reactor framework was utilized in RISIS to help data providers with no Linked Data experience to provide RDF metadata about their datasets\footnote{\url{http://sms.risis.eu}}. This metadata is then used to allow researchers to search, identify, and request access to the data they are interested in\footnote{\url{http://datasets.risis.eu}}.
-%In order to expose a user-friendly interface to researchers, a set of configurations and components were devised.
-In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor configuration file\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}.
-\vspace{-1em}
+
+In the following, we present the main requirements for configurations and components, together with their representation in the LD-Reactor framework\footnote{see the complete configuration file at \url{http://github.com/risis-eu/sms-platform}}.
+
 \paragraph{Configurations:}
 \small
 \begin{itemize}
@@ -544,71 +363,7 @@ In the following, we present the main requirements for configurations and compon
 \end{itemize}
 
 In accordance to the LD-Reactor microservices architecture (cf. Section \ref{sec:implementation}), we built a \emph{DBpediaGMap} viewer component where we reused the current react-google-maps together with DBpedia lookup and query services to retrieve the coordinates for the recognized DBpedia resource values.
-%\autoref{fig:risisScreenshot} shows a screenshot of the generated UIs for metadata and search.
-
-%\newpage
-%\begin{lstlisting}[language=json,firstnumber=1, label=code:config, caption=An excerpt of the LD-Reactor configuration for the RISIS metadata editor.]
-%resource: {
-%    `generic': {
-%        usePropertyCategories: 1,
-%        propertyCategories: [`overview', `legalAspects', `technicalAspects'],
-%        resourceReactor: [`Resource'],
-%        shortenURI: 1
-%    }
-%},
-%property: {
-%    `generic': {
-%        propertyReactor: [`IndividualProperty'],
-%        objectReactor: [`IndividualObject'],
-%        objectIViewer: [`BasicIndividualView'],
-%        objectIEditor: [`BasicIndividualInput']
-%    },
-%    `http://purl.org/dc/terms/language': {
-%        allowNewValue: 1,
-%        label: [`Dataset Language'],
-%        category: [`overview'],
-%        hint: [`The language of the dataset. Resources defined by the Library of Congress (http://id.loc.gov/vocabulary/iso639-1.html, http://id.loc.gov/vocabulary/iso639-2.html) SHOULD be used.'],
-%        objectIViewer: [`LanguageView'],
-%        objectIEditor: [`LanguageInput'],
-%        defaultValue: [`http://id.loc.gov/vocabulary/iso639-1/en']
-%    },
-%    `http://purl.org/dc/terms/spatial': {
-%         label: [`Geographical coverage'],
-%         category: [`overview'],
-%         hint: [`The geographical area covered by the dataset.'],
-%         allowNewValue: 1,
-%         objectReactor: [`AggregateObject'],
-%         objectAViewer: [`DBpediaGoogleMapView'],
-%         objectIViewer: [`BasicDBpediaView'],
-%         asWikipedia: 1,
-%         objectAEditor: [`BasicAggregateInput'],
-%         objectIEditor: [`DBpediaInput'],
-%         lookupClass: [`Place']
-%     },
-%    `http://purl.org/dc/terms/subject': {
-%        category: [`overview'],
-%        label: [`Keywords'],
-%        hint: [`Tags a dataset with a topic.'],
-%        allowNewValue: 1,
-%        objectIEditor: [`DBpediaInput'],
-%        objectIViewer: [`BasicDBpediaView'],
-%        asWikipedia: 1
-%    },
-%    `http://purl.org/dc/terms/license': {
-%        category: [`legalAspects'],
-%        label: [`License'],
-%        allowNewValue: 1,
-%        objectIViewer: [`BasicOptionView'],
-%        objectIEditor: [`BasicOptionInput'],
-%        options: [
-%            {label: `Open Data Commons Attribution License', value: `http://www.opendatacommons.org/licenses/by/'},
-%            {label: `Creative Commons Attribution-ShareAlike', value: `http://creativecommons.org/licenses/by-sa/3.0/'}
-%        ],
-%        allowUserDefinedValue: 1
-%    }
-%}
-%\end{lstlisting}
-
+\vspace{-1em}
 \subsection{Open PHACTS}
 
 The Open PHACTS Discovery Platform has been developed to reduce barriers to drug discovery, by collecting and integrating a large number of prominent RDF datasets in the pharmacology domain. The platform provides a uniform RESTful API for application developers to access the integrated data.
@@ -681,13 +436,14 @@ As our future plan, we envisage creating a cloud infrastructure for sharing and 
 We also plan to make a user interface to facilitate creation of the LD-R scopes and configurations.
 Another direction for future research is developing mechanisms for the automatic configuration and composition of Web components based on the semantic markup provided.
 
-%\section{Aknowledgement}
-%We would like to thank professor Peter van den Besselaar from the faculty of Social Sciences and our colleagues from the Knowledge Representation \& Reasoning research group at VU University Amsterdam for their helpful comments during the development of the LD-Reactor framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
-%
+\section{Aknowledgement}
+\small
+We would like to thank prof. Peter van den Besselaar from the faculty of Social Sciences and our colleagues from the Knowledge Representation \& Reasoning research group at Vrije Universiteit Amsterdam for their helpful comments during the development of the LD-Reactor framework. This work was supported by a grant from the European Union's 7th Framework Programme provided for the project RISIS (GA no. 313082).
+
 %\clearpage
 
 \bibliographystyle{abbrv}
 \scriptsize
-\bibliography{refs2}
+\bibliography{refs}
 
 \end{document}
